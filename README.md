@@ -4,7 +4,7 @@ Below is a listing of all chapters and extra documents used for the course.
 
 ## Chapters & Manuals
 
-* ###[Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Introduction.ipynb)
+* ###[Course Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Introduction.ipynb)
 
     **Course Description and Background Information**  
 
@@ -31,3 +31,10 @@ Below is a listing of all chapters and extra documents used for the course.
 * ###[Creating a Custom Galaxy Tool](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Custom_Galaxy_Tool.ipynb)
 
     **Instructions on How To Create a Galaxy Tool**
+
+## Course Planning
+
+* Week 1: *Course Introduction* & Chapters **1** through **3.2**
+* Week 2: Chapters **3** through **5**, including deliverables **1** & **2** from the programming assignments (*chapter 5.2*)
+* Week 3: Remaining programming assignments chapter **5**
+* Week 4 - 7: TODO
