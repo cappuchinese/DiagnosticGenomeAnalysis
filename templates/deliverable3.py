@@ -9,8 +9,7 @@ Pileup data falling within the exons in the 'bed_dict' is printed.
 Deliverable 3
 -------------
 Make changes to the 'parse_pileup_data' function, following the instructions
-preceded with double '##' signs. Note that the indentation of these instructions
-can be used for placing the code.
+preceded with double '##' signs.
 
     usage:
         python3 deliverable3.py
@@ -38,6 +37,7 @@ def parse_pileup_data(pileup_data, bed_dict):
     ## Iterate over all exons and check if the pileup-coordinate lies within the 
     ## exon coordinates. If so; print the pileup chromosome, position and
     ## coverage data (column 4).
+    pass
 
 # MAIN
 def main(args):

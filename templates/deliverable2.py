@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 """
-Minor Bioinformatics for the Life Scientists - Diagnostic Genome Analysis 
+BFV2 Theme 05 - Genomics - Sequencing Project
 
-Simple template for parsing BED data. 
+Simple template for parsing BED data.
 
 Deliverable 2
 -------------
 Make changes to the 'parse_bed_data' function, following the instructions
-preceded with double '##' signs.
+preceded with double '##' symbols.
 
     usage:
         python3 deliverable2.py

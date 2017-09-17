@@ -9,7 +9,7 @@ the exons contained within this data.
 Deliverable 1
 -------------
 Make changes to the 'parse_bed_data' function,
-following the instructions preceded with double '##' signs.
+following the instructions preceded with double '##' symbols.
 
 (Change the metadata for each of the deliverables)
 
