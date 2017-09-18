@@ -26,6 +26,7 @@ preceded with double '##' symbols.
 The 'main()' functions glues all your functions into a single coherent
 program that performs all required steps.
 
+* Note: Test the program on the example data first.
 * Note: by default the 'data/example.bed' and 'data/example.pileup' files are
         used as input, but you can supply your own files on the
         commandline.

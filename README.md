@@ -28,6 +28,10 @@ Below is a listing of all chapters and extra documents used for the course.
 
     **Inspecting the Mapping Data**
 
+* ###[Forking and Mananaging a Repository](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Repository.ipynb)
+
+    **Instructions on Forking this Repository**
+
 * ###[Creating a Custom Galaxy Tool](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Custom_Galaxy_Tool.ipynb)
 
     **Instructions on How To Create a Galaxy Tool**
