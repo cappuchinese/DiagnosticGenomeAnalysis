@@ -28,6 +28,10 @@ Below is a listing of all chapters and extra documents used for the course.
 
     **Inspecting the Mapping Data**
 
+* ###[Chapter 6; Varscan](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH6_Varscan.ipynb)
+
+    **Finding the Actual Variant Positions**
+
 * ###[Forking and Mananaging a Repository](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Repository.ipynb)
 
     **Instructions on Forking this Repository**
@@ -40,5 +44,5 @@ Below is a listing of all chapters and extra documents used for the course.
 
 * Week 1: *Course Introduction* & Chapters **1** through **3.2**
 * Week 2: Chapters **3** through **5**, including deliverables **1** & **2** from the programming assignments (*chapter 5.2*)
-* Week 3: Remaining programming assignments chapter **5**
+* Week 3: Remaining programming assignments chapter **5** and running the `Varscan` Galaxy tool from chapter **6**
 * Week 4 - 7: TODO
