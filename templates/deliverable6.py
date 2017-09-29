@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 BFV2 Theme 05 - Genomics - Sequencing Project
 
