@@ -49,4 +49,7 @@ Below is a listing of all chapters and extra documents used for the course.
 * Week 1: *Course Introduction* & Chapters **1** through **3.2**
 * Week 2: Chapters **3** through **5**, including deliverables **1** & **2** from the programming assignments (*chapter 5.2*)
 * Week 3: Remaining programming assignments chapter **5** and running the `Varscan` Galaxy tool from chapter **6**
-* Week 4: Programming the `Varscan` VCF-filter application (deliverable 8) and running the `ANNOVAR` tool
+* Week 4: Programming the `Varscan` VCF-filter application (deliverable 8), creating a Galaxy VCF-filter tool (updated instructions) and running the `ANNOVAR` tool from chapter **7**
+* Week 5: Writing the *Introduction* chapter, describing the `ANNOVAR` output and processing this using Python (deliverable 9)
+* Week 6: Continuing programming assignments; filtering `RefSeq_Gene` data (deliverable 10), designing a database schema (deliverable 11) and creating a template for deliverable 12.
+* Week 7: Finishing deliverable 12 and querying the resulting database (chapter **7.4**)
