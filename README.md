@@ -4,45 +4,46 @@ Below is a listing of all chapters and extra documents used for the course.
 
 ## Chapters & Manuals
 
-* ###[Course Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Introduction.ipynb)
+* ###[Course Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/01_introduction.ipynb)
 
     **Course Description and Background Information**  
 
-* ###[Chapter 1; Galaxy Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH1_Galaxy_Introduction.ipynb)
+* ###[Chapter 1; Galaxy Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/02_galaxy_introduction.ipynb)
 
     **Introducing the Galaxy Server(s)**  
 
-* ###[Chapter 2; Data Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH2_Data.ipynb)
+* ###[Chapter 2; Data Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/03_data.ipynb)
 
     **Explanation of the FASTQ Data Format**
 
-* ###[Chapter 3; Quality Control](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH3_QC.ipynb)
+* ###[Chapter 3; Quality Control](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/04_qc.ipynb)
 
     **Performing Quality Control on NGS Data**
 
-* ###[Chapter 4; Read Mapping](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH4_Read_Mapping.ipynb)
+* ###[Chapter 4; Read Mapping](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/05_read_mapping.ipynb)
 
     **Mapping NGS Data to a Reference Genome**
 
-* ###[Chapter 5; Pileup](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH5_Pileup.ipynb)
+* ###[Chapter 5; Pileup](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/06_pileup.ipynb)
 
     **Inspecting the Mapping Data**
 
-* ###[Chapter 6; Varscan](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH6_Varscan.ipynb)
+* ###[Chapter 6; Varscan](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/07_varscan.ipynb)
 
     **Finding the Actual Variant Positions**
 
-* ###[Chapter 7; Annovar](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_CH7_Annovar.ipynb)
+* ###[Chapter 7; Annovar](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/08_annovar.ipynb)
 
     **Annotating found Variants using ANNOVAR**
 
-* ###[Forking and Mananaging a Repository](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Repository.ipynb)
+* ###[Creating a Custom Galaxy Tool](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/a1_custom_galaxy_tool.ipynb)
+
+    **Instructions on How To Create a Galaxy Tool**
+
+* ###[Forking and Mananaging a Repository](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/a2_repository.ipynb)
 
     **Instructions on Forking this Repository**
 
-* ###[Creating a Custom Galaxy Tool](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/TH5_Custom_Galaxy_Tool.ipynb)
-
-    **Instructions on How To Create a Galaxy Tool**
 
 ## Course Planning
 
@@ -50,6 +51,6 @@ Below is a listing of all chapters and extra documents used for the course.
 * Week 2: Chapters **3** through **5**, including deliverables **1** & **2** from the programming assignments (*chapter 5.2*)
 * Week 3: Remaining programming assignments chapter **5** and running the `Varscan` Galaxy tool from chapter **6**
 * Week 4: Programming the `Varscan` VCF-filter application (deliverable 8), creating a Galaxy VCF-filter tool (updated instructions) and running the `ANNOVAR` tool from chapter **7**
-* Week 5: Writing the *Introduction* chapter, describing the `ANNOVAR` output and processing this using Python (deliverable 9)
+* Week 5: Describing the `ANNOVAR` output and processing this using Python (deliverable 9)
 * Week 6: Continuing programming assignments; filtering `RefSeq_Gene` data (deliverable 10), designing a database schema (deliverable 11) and creating a template for deliverable 12.
-* Week 7: Finishing deliverable 12 and querying the resulting database (chapter **7.4**)
+* Week 7: Finishing deliverable 12, summarizing the results and creating a Poster (chapter **7.4**)
