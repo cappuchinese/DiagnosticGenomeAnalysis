@@ -4,35 +4,35 @@ Below is a listing of all chapters and extra documents used for the course.
 
 ## Chapters & Manuals
 
-* ###[Course Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/01_introduction.ipynb)
+* ###[Course Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/00_introduction.ipynb)
 
     **Course Description and Background Information**  
 
-* ###[Chapter 1; Galaxy Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/02_galaxy_introduction.ipynb)
+* ###[Chapter 1; Galaxy Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/01_galaxy_introduction.ipynb)
 
     **Introducing the Galaxy Server(s)**  
 
-* ###[Chapter 2; Data Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/03_data.ipynb)
+* ###[Chapter 2; Data Introduction](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/02_data.ipynb)
 
     **Explanation of the FASTQ Data Format**
 
-* ###[Chapter 3; Quality Control](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/04_qc.ipynb)
+* ###[Chapter 3; Quality Control](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/03_qc.ipynb)
 
     **Performing Quality Control on NGS Data**
 
-* ###[Chapter 4; Read Mapping](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/05_read_mapping.ipynb)
+* ###[Chapter 4; Read Mapping](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/04_read_mapping.ipynb)
 
     **Mapping NGS Data to a Reference Genome**
 
-* ###[Chapter 5; Pileup](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/06_pileup.ipynb)
+* ###[Chapter 5; Pileup](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/05_pileup.ipynb)
 
     **Inspecting the Mapping Data**
 
-* ###[Chapter 6; Varscan](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/07_varscan.ipynb)
+* ###[Chapter 6; Varscan](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/06_varscan.ipynb)
 
     **Finding the Actual Variant Positions**
 
-* ###[Chapter 7; Annovar](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/08_annovar.ipynb)
+* ###[Chapter 7; Annovar](http://nbviewer.jupyter.org/urls/bitbucket.org/mkempenaar/diagnosticgenomeanalysis/raw/master/chapters/07_annovar.ipynb)
 
     **Annotating found Variants using ANNOVAR**
 
