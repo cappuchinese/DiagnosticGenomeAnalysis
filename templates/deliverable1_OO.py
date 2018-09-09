@@ -14,19 +14,19 @@ are already given, later deliverables require to write these yourselves.
 this program can already be executed and it will properly report the difference
 between the given output and the expected output.
 
-Deliverable 2
--------------
+Deliverable 1 - Object Oriented Version
+---------------------------------------
 Make changes to the 'BED' and 'Exon' classes and the `bed_to_datastructure` function,
 following the instructions preceded with double '##' symbols.
 
     usage:
-        python3 deliverable2.py
+        python3 deliverable1.py
 """
 
 # METADATA VARIABLES
 __author__ = "Marcel Kempenaar"
 __status__ = "Template"
-__version__ = "2017.d2adv.v2"
+__version__ = "2017.d1oo.v3"
 
 # IMPORTS
 import sys
@@ -176,7 +176,7 @@ def _assert_output_vs_expected(output, expected):
     """ Compares given output with expected output.
     Do not modify. """
     import unittest
-    if type(output) == dict:
+    if isinstance(output, dict):
         testcase = unittest.TestCase('__init__')
         try:
             testcase.assertDictEqual(expected, output,
@@ -185,8 +185,9 @@ def _assert_output_vs_expected(output, expected):
             print(error)
             return 0
         print("\nWell done! Output is correct!")
-    else:
-        print("\n\nUnfortunately, the output is *not* a dictionary!")
+        return 1
+    print("\n\nUnfortunately, the output is *not* a dictionary!")
+    return 0
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))

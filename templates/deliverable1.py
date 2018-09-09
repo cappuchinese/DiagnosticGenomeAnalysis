@@ -3,35 +3,40 @@
 """
 BFV2 Theme 05 - Genomics - Sequencing Project
 
-Simple template for parsing BED data and printing information about
-the exons contained within this data.
+Simple template for parsing BED data.
 
 Deliverable 1
 -------------
-Make changes to the 'parse_bed_data' function,
-following the instructions preceded with double '##' symbols.
-
-(Change the metadata for each of the deliverables)
+Make changes to the 'parse_bed_data' function, following the instructions
+preceded with double '##' symbols.
 
     usage:
         python3 deliverable1.py
 """
 
-# METADATA VARIABLES [change these where necessary!]
+# METADATA VARIABLES
 __author__ = "Marcel Kempenaar"
 __status__ = "Template"
-__version__ = "2017.d1.v2"
+__version__ = "2018.d1.v1"
 
 # IMPORT
 import sys
 
 # FUNCTIONS
 def parse_bed_data(bed_data):
-    """ Function that parses BED data and prints its contents """
-    ## Iterate over the `bed_data` contents and print details for each exon
-    ## in the following format:
-    ##      chromosome: 10, start: 10, stop: 1000, name: SOD2
-    pass
+    """ Function that parses BED data and stores its contents
+        in a dictionary
+    """
+    ## Create empty dictionary to hold the data
+    bed_dict = {}
+
+    ## Iterate over all lines in the 'bed_data' list and fill the
+    ## `bed_dict` dictionary with the `chromosome` as key. The other fields
+    ## are added as a tuple using the correct types.
+    ## Check the `expected_bed_dict` output example in the `main` function below.
+
+    ## Return the bed_dict one all lines are done
+    return bed_dict
 
 ######
 # Do not change anything below this line
@@ -39,8 +44,8 @@ def parse_bed_data(bed_data):
 
 # MAIN
 def main(args):
-    """ Main function """
-    # Create a small subset of data (9 exons for 3 genes on 3 chromosomes)
+    """ Main function that tests for correct parsing of BED data """
+    ### INPUT ###
     bed_data = [
         "1	237729847	237730095	RYR2",
         "1	237732425	237732639	RYR2",
@@ -53,8 +58,37 @@ def main(args):
         "X	153649222	153649363	TAZ"
     ]
 
-    parse_bed_data(bed_data)
+    ### OUTPUT ###
+    expected_bed_dict = {
+        '1':  [(237729847, 237730095, 'RYR2'),
+               (237732425, 237732639, 'RYR2'),
+               (237753073, 237753321, 'RYR2')],
+        '18': [(28651551, 28651827, 'DSC2'),
+               (28654629, 28654893, 'DSC2'),
+               (28659793, 28659975, 'DSC2')],
+        'X':  [(153648351, 153648623, 'TAZ'),
+               (153648977, 153649094, 'TAZ'),
+               (153649222, 153649363, 'TAZ')]}
 
+    # Call the parse-function
+    bed_dict = parse_bed_data(bed_data)
+    _assert_output_vs_expected(bed_dict, expected_bed_dict)
+
+def _assert_output_vs_expected(output, expected):
+    """ Compares given output with expected output.
+    Do not modify. """
+    import unittest
+    if isinstance(output, dict):
+        testcase = unittest.TestCase('__init__')
+        try:
+            testcase.assertDictEqual(expected, output,
+                                     msg="\n\nUnfortunately, the output is *not* correct..")
+        except AssertionError as error:
+            print(error)
+            return 0
+        print("\nWell done! Output is correct!")
+        return 1
+    print("\n\nUnfortunately, the output is *not* a dictionary!")
     return 0
 
 if __name__ == '__main__':
