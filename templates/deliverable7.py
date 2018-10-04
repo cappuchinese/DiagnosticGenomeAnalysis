@@ -6,7 +6,7 @@ BFV2 Theme 05 - Genomics - Sequencing Project
 Template for filtering Gene names from the 'RefSeq_Gene' column given
 in ANNOVAR output files.
 
-Deliverable 10
+Deliverable 7
 -------------
 Make changes to the 'get_gene_name' function
 
@@ -17,7 +17,7 @@ Make changes to the 'get_gene_name' function
 # METADATA VARIABLES
 __author__ = "Marcel Kempenaar"
 __status__ = "Template"
-__version__ = "2017.d10.v2"
+__version__ = "2018.d7.v1"
 
 # IMPORT
 import sys
