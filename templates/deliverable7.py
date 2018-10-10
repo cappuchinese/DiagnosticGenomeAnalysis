@@ -11,7 +11,7 @@ Deliverable 7
 Make changes to the 'get_gene_name' function
 
     usage:
-        python3 deliverable10.py
+        python3 deliverable7.py
 """
 
 # METADATA VARIABLES
