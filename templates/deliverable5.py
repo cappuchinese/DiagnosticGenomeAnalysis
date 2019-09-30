@@ -8,13 +8,13 @@ BFV2 Theme 05 - Genomics - Sequencing Project
 Template for parsing and filtering VCF data given a certain variant
 allele frequency value.
 
-Deliverable 8
+Deliverable 5
 -------------
 Make changes to the `parse_vcf_data` function AND the `main` function,
 following the instructions preceded with double '##' symbols.
 
     usage:
-        python3 deliverable8.py vcf_file.vcf frequency out_file.vcf
+        python3 deliverable5.py vcf_file.vcf frequency out_file.vcf
 
     arguments:
         vcf_file.vcf: the input VCF file, output from the varscan tool
@@ -29,7 +29,7 @@ following the instructions preceded with double '##' symbols.
 # METADATA VARIABLES
 __author__ = "Marcel Kempenaar"
 __status__ = "Template"
-__version__ = "2017.d8.v3"
+__version__ = "2019.d5.v1"
 
 # IMPORT
 import sys
@@ -61,7 +61,7 @@ def main(args):
     else:
         print('Warning, no arguments given, using default values (testing only)...')
         vcf_file = 'data/example.vcf'
-        out_vcf = 'data/d8_output.vcf'
+        out_vcf = 'data/d5_output.vcf'
         frequency = 30
 
     # Process the VCF-file
