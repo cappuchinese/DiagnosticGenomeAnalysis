@@ -22,30 +22,41 @@ __version__ = "2018.d1.v1"
 # IMPORT
 import sys
 
+
 # FUNCTIONS
 def parse_bed_data(bed_data):
     """ Function that parses BED data and stores its contents
         in a dictionary
     """
-    ## Create empty dictionary to hold the data
+    # Create empty dictionary to hold the data
     bed_dict = {}
 
-    ## Iterate over all lines in the 'bed_data' list and fill the
-    ## `bed_dict` dictionary with the `chromosome` as key. The other fields
-    ## are added as a tuple using the correct types.
-    ## Check the `expected_bed_dict` output example in the `main` function below.
+    for line in bed_data:
+        line = line.split()
 
-    ## Return the bed_dict one all lines are done
+        value = (int(line[1]), int(line[2]), line[3])
+        if line[0] in bed_dict:
+            bed_dict[line[0]].append(value)
+        else:
+            bed_dict[line[0]] = []
+            bed_dict[line[0]].append(value)
+    # Iterate over all lines in the 'bed_data' list and fill the
+    # `bed_dict` dictionary with the `chromosome` as key. The other fields
+    # are added as a tuple using the correct types.
+    # Check the `expected_bed_dict` output example in the `main` function below.
+
+    # Return the bed_dict one all lines are done
     return bed_dict
 
 ######
 # Do not change anything below this line
 ######
 
+
 # MAIN
 def main(args):
     """ Main function that tests for correct parsing of BED data """
-    ### INPUT ###
+    # INPUT
     bed_data = [
         "1	237729847	237730095	RYR2",
         "1	237732425	237732639	RYR2",
@@ -58,7 +69,7 @@ def main(args):
         "X	153649222	153649363	TAZ"
     ]
 
-    ### OUTPUT ###
+    # OUTPUT
     expected_bed_dict = {
         '1':  [(237729847, 237730095, 'RYR2'),
                (237732425, 237732639, 'RYR2'),
@@ -73,6 +84,7 @@ def main(args):
     # Call the parse-function
     bed_dict = parse_bed_data(bed_data)
     _assert_output_vs_expected(bed_dict, expected_bed_dict)
+
 
 def _assert_output_vs_expected(output, expected):
     """ Compares given output with expected output.
@@ -90,6 +102,7 @@ def _assert_output_vs_expected(output, expected):
         return 1
     print("\n\nUnfortunately, the output is *not* a dictionary!")
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
