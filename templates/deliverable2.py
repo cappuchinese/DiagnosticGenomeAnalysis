@@ -25,6 +25,7 @@ __version__ = "2018.d2.v1"
 # IMPORT
 import sys
 
+
 # FUNCTIONS
 def parse_pileup_data(pileup_data, bed_dict):
     """ Function that parses pileup data and collects the per-base coverage
@@ -35,29 +36,43 @@ def parse_pileup_data(pileup_data, bed_dict):
             - if so; add the coverage to the `coverage_dict` for the correct gene
     """
 
-    ## Remove thse print statements after the first time executing this program
-    print('Input pilup data: ', pileup_data)
+    # Remove these print statements after the first time executing this program
+    print('Input pileup data: ', pileup_data)
     print('\nInput BED data: ', bed_dict)
 
-    ## Create empty dictionary to hold the data
+    # Create empty dictionary to hold the data
     coverage_dict = {}
 
-    ## Iterate over all the lines contained in the pileup_data
-    ## Extract the 'chromosome' field and remove the 'chr' text
-    ## Check if the chromosome is contained in the bed_dict
-        ## If yes; extract the coordinate from the pileup and compare to all
-        ##         exons for that chromosome in the `bed_dict`
-        ##         If the position falls within an exon, add the coverage
-        ##         value to the list for the gene in the `coverage_dict`
+    for line in pileup_data:
+        line = line.split("\t")
+        chromosome = line[0].split("r")[1]
+        if chromosome in bed_dict:
+            pile_coord = int(line[1])
+            print(type(bed_dict[chromosome][1][0]))
+            if pile_coord > bed_dict[chromosome][1][0] and pile_coord > bed_dict[chromosome][1][1]:
+                if bed_dict[chromosome][1][2] not in coverage_dict:
+                    coverage_dict[bed_dict[chromosome][1][2]] = []
+                    coverage_dict[bed_dict[chromosome][1][2]].append(line[3])
+                else:
+                    coverage_dict[bed_dict[chromosome][1][2]].append(line[3])
 
-    ## Return coverage dictionary
+    # Iterate over all the lines contained in the pileup_data
+    # Extract the 'chromosome' field and remove the 'chr' text
+    # Check if the chromosome is contained in the bed_dict
+        # If yes; extract the coordinate from the pileup and compare to all
+        #         exons for that chromosome in the `bed_dict`
+        #         If the position falls within an exon, add the coverage
+        #         value to the list for the gene in the `coverage_dict`
+
+    # Return coverage dictionary
     return coverage_dict
+
 
 # MAIN
 def main(args):
     """ Main function with example input data (pileup and parsed bed)"""
 
-    ### INPUT ###
+    # INPUT
     # Pileup data with chromosome, position, base, coverage, reads, quality
     pileup_data = [
         'chr1	839427	A	24	,,,,,,,,,,,,,,,,,,,,,,,,	BFGGGGGGGGHHGHH3AFHHIGFG',
@@ -86,7 +101,7 @@ def main(args):
                (28654629, 28654893, 'DSC2'),
                (28659793, 28659975, 'DSC2')]}
 
-    ### OUTPUT ###
+    # OUTPUT
     expected_coverage_dict = {
         "RYR2" : [24, 24, 26, 27],
         "DSC2" : [23, 23, 23, 19, 19]
@@ -98,6 +113,7 @@ def main(args):
 
     # FINISH
     return 0
+
 
 def _assert_output_vs_expected(output, expected):
     """ Compares given output with expected output.
@@ -115,6 +131,7 @@ def _assert_output_vs_expected(output, expected):
         return 1
     print("\n\nUnfortunately, the output is *not* a dictionary!")
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
