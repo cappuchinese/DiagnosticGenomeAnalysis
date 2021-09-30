@@ -48,21 +48,13 @@ def parse_pileup_data(pileup_data, bed_dict):
         chromosome = line[0].split("r")[1]
         if chromosome in bed_dict:
             pile_coord = int(line[1])
-            print(type(bed_dict[chromosome][1][0]))
-            if pile_coord > bed_dict[chromosome][1][0] and pile_coord > bed_dict[chromosome][1][1]:
-                if bed_dict[chromosome][1][2] not in coverage_dict:
-                    coverage_dict[bed_dict[chromosome][1][2]] = []
-                    coverage_dict[bed_dict[chromosome][1][2]].append(line[3])
-                else:
-                    coverage_dict[bed_dict[chromosome][1][2]].append(line[3])
-
-    # Iterate over all the lines contained in the pileup_data
-    # Extract the 'chromosome' field and remove the 'chr' text
-    # Check if the chromosome is contained in the bed_dict
-        # If yes; extract the coordinate from the pileup and compare to all
-        #         exons for that chromosome in the `bed_dict`
-        #         If the position falls within an exon, add the coverage
-        #         value to the list for the gene in the `coverage_dict`
+            for exon in bed_dict[chromosome]:
+                if pile_coord in range(exon[0], exon[1]):
+                    if bed_dict[chromosome][1][2] not in coverage_dict:
+                        coverage_dict[bed_dict[chromosome][1][2]] = []
+                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
+                    else:
+                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
 
     # Return coverage dictionary
     return coverage_dict
@@ -103,8 +95,8 @@ def main(args):
 
     # OUTPUT
     expected_coverage_dict = {
-        "RYR2" : [24, 24, 26, 27],
-        "DSC2" : [23, 23, 23, 19, 19]
+        "RYR2": [24, 24, 26, 27],
+        "DSC2": [23, 23, 23, 19, 19]
     }
 
     # Call the parse-function
