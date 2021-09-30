@@ -16,7 +16,7 @@ following the instructions preceded with double '##' symbols.
 
     arguments:
         vcf_file.vcf: the input VCF file, output from the varscan tool
-                      frequency: a number (integer) to use as filtering value
+        frequency: a number (integer) to use as filtering value
         out_file.vcf: name of the output VCF file 
 
     output:
@@ -66,9 +66,19 @@ def main(args):
     # Try to read input arguments from the commandline.
     # *After* testing, make sure the program gives proper errors if input is missing
 
-    ## Change the handling of input/ output to using the `argparse` library
     if len(args) > 1:
-        pass
+        parser = argparse.ArgumentParser()
+        parser.add_argument("input", metavar="I", type=open, nargs=1,
+                            help="input vcf file")
+        parser.add_argument("frequency", metavar="F", type=float, nargs=1,
+                            help="frequency threshold")
+        parser.add_argument("output", metavar="O", type=argparse.FileType("w"),
+                            help="output vcf file")
+
+        vcf_file = args[1]
+        frequency = int(args[2])
+        out_vcf = args[3]
+
     else:
         print('Warning, no arguments given, using default values (testing only)...')
         vcf_file = 'data/example.vcf'
