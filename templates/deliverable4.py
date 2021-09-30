@@ -46,26 +46,110 @@ __version__ = "2018.d4.v1"
 import sys
 import csv
 
+
 # FUNCTIONS
 def read_data(filename):
-    """ PLACE YOUR deliverable3 'read_data' FUNCTION HERE """
-    pass
+    """ This function reads in data and returns a list containing one
+        line per element. """
+    opened_f = open(filename, "r")  # Open the file given the filename stored in 'filename'
+    lines_list = []
+    for line in opened_f:  # Iterate through lines of file
+        lines_list.append(line)  # Add line to list
+
+    opened_f.close()  # Close the file
+
+    return lines_list  # Return a list where each line is a list element
+
 
 def parse_bed_data(bed_data):
-    """ PLACE YOUR deliverable1 'parse_bed_data' FUNCTION HERE """
-    pass
+    """
+    Function that parses BED data and stores its contents
+        in a dictionary
+    """
+    # Create empty dictionary to hold the data
+    bed_dict = {}
+
+    for line in bed_data:  # Iterate through BED data
+        line = line.split()
+
+        value = (int(line[1]), int(line[2]), line[3])  # Make a tuple with data
+        # Add data to dictionary as {Chromosome : [(pos1, pos2, exon), (pos1, pos2, exon)]}
+        if line[0] in bed_dict:
+            bed_dict[line[0]].append(value)
+        else:
+            bed_dict[line[0]] = []
+            bed_dict[line[0]].append(value)
+
+    return bed_dict
+
 
 def parse_pileup_data(pileup_data, bed_dict):
-    """ PLACE YOUR deliverable2 'parse_pileup_data' FUNCTION HERE """
-    pass
+    """
+    Function that parses pileup data and collects the per-base coverage
+        of all exons contained in the BED data.
+
+    Iterate over all pileup lines and for each line:
+        - check if the position falls within an exon (from `bed_dict`)
+            - if so; add the coverage to the `coverage_dict` for the correct gene
+    """
+
+    # Create empty dictionary to hold the data
+    coverage_dict = {}
+
+    for line in pileup_data:
+        # Loop through the pileup_data and extract the chromosome
+        line = line.split("\t")
+        chromosome = line[0].split("r")[1]
+        if chromosome in bed_dict:
+            # Save the location of the pile_coord
+            pile_coord = int(line[1])
+            # Loop through the bed_dict for each exon
+            for exon in bed_dict[chromosome]:
+                # If pile_coord is inbetween the exon location, save it to the coverage_dict
+                if pile_coord in range(exon[0], exon[1]):
+                    if bed_dict[chromosome][1][2] not in coverage_dict:
+                        coverage_dict[bed_dict[chromosome][1][2]] = []
+                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
+                    else:
+                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
+
+    # Return coverage dictionary
+    return coverage_dict
+
 
 def calculate_mapping_coverage(coverage_dict):
-    """ PLACE YOUR deliverable3 'calculate_mapping_coverage' FUNCTION HERE """
-    pass
+    """
+    Function to calculate all coverage statistics on a per-gene basis
+        and store this in a list.
+        Note: this function is taken from deliverable 5 and slightly modified
+    """
+
+    # Create an empty list that will hold all data to save
+    statistics = []
+
+    # Iterate over all the genes in the coverage_dict getting the gene name
+    for key in coverage_dict:
+        total = sum(coverage_dict[key])  # Gene length covered
+        average = total/len(coverage_dict[key])  # Average coverage
+        low_cov = sum(map(lambda x: x < 30, coverage_dict[key]))  # Number of low coverage
+        statistics.append((key, total, average, low_cov))
+
+    return statistics
+
 
 def save_coverage_statistics(coverage_file, coverage_statistics):
-    """ PLACE YOUR deliverable3 'save_coverage_statistics' FUNCTION HERE """
-    pass
+    """
+    Writes coverage data to a tabular file using Python's
+        csv library: https://docs.python.org/3/library/csv.html#csv.writer
+    """
+    with open(coverage_file, "w", newline="") as write_f:
+        coverage_w = csv.writer(write_f, delimiter="\t")
+        for gene in coverage_statistics:
+            coverage_w.writerow(gene)
+
+    write_f.close()
+    # Write the coverage_statistics to a CSV file
+    return coverage_w
 
 
 ######
@@ -150,6 +234,7 @@ def main(args):
             print('\tCSV file', output_file, 'does not exist!')
 
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
