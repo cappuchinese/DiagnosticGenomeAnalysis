@@ -176,9 +176,9 @@ def main(args):
             print('Warning: given pileup file does not have a ".pileup" extension.')
         output_file = args[3]
     else:
-        bed_file = 'example.bed'
-        pileup_file = 'example.pileup'
-        output_file = 'd4_output.csv'
+        bed_file = 'data/example.bed'
+        pileup_file = 'data/example.pileup'
+        output_file = 'data/d4_output.csv'
 
     # STEP 1: Read BED data
     print('Reading BED data from', bed_file)
