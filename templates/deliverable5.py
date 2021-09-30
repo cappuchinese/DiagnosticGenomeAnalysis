@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
-
 """
 BFV2 Theme 05 - Genomics - Sequencing Project
 
@@ -33,6 +31,8 @@ __version__ = "2019.d5.v1"
 
 # IMPORT
 import sys
+import argparse
+
 
 def parse_vcf_data(vcf_input_file, frequency, vcf_output_file):
     """ This function reads the input VCF file line by line, skipping the first
@@ -40,12 +40,23 @@ def parse_vcf_data(vcf_input_file, frequency, vcf_output_file):
     frequencies > frequency.
     """
 
-    ## Open the INTPUT VCF file, read the contents line-by-line
-    ## Write the first ... comment-lines (header) directly to the output file
+    with open(vcf_input_file, "r") as input_vcf:  # Open the INPUT VCF file
+        lines = input_vcf.readlines()  # Read the contents line-by-line
 
-    ## Compare the 'FREQ' field with the `frequency` value and write the line
-    ## to the output file if FREQ > frequency
-    pass
+    with open(vcf_output_file, "w") as output_vcf:
+        for line in lines:
+            # Write the first comment-lines (header) directly to the output file
+            if line.startswith("##"):
+                output_vcf.writelines(line)
+            elif line.startswith("#C"):
+                pass  # Pass the format-header line
+            else:
+                line = line.split()
+                freq = float(line[9].split(":")[6].split("%")[0])  # Parse to get the frequency
+                if freq > frequency:  #Compare the 'FREQ' field with the `frequency` value
+                    output_vcf.writelines("\t".join(line) + "\n")  # Write the line to output
+
+    return output_vcf
 
 # MAIN
 def main(args):
@@ -68,6 +79,7 @@ def main(args):
     parse_vcf_data(vcf_file, frequency, out_vcf)
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
