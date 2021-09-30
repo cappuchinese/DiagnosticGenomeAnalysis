@@ -36,10 +36,6 @@ def parse_pileup_data(pileup_data, bed_dict):
             - if so; add the coverage to the `coverage_dict` for the correct gene
     """
 
-    # Remove these print statements after the first time executing this program
-    print('Input pileup data: ', pileup_data)
-    print('\nInput BED data: ', bed_dict)
-
     # Create empty dictionary to hold the data
     coverage_dict = {}
 

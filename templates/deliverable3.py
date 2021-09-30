@@ -31,21 +31,35 @@ __version__ = "2018.d3.v1"
 import sys
 import csv
 
+
 # FUNCTIONS
 def read_data(filename):
     """ This function reads in data and returns a list containing one
         line per element. """
-    ## Open the file given the filename stored in 'filename'
-    ## Return a list where each line is a list element
-    pass
+
+    opened_f = open(filename, "r")  # Open the file given the filename stored in 'filename'
+    lines_list = []
+    for line in opened_f:  # Iterate through lines of file
+        lines_list.append(line)  # Add line to list
+
+    opened_f.close()
+
+    return lines_list  # Return a list where each line is a list element
+
 
 def save_coverage_statistics(coverage_file, coverage_statistics):
     """ Writes coverage data to a tabular file using Python's
         csv library: https://docs.python.org/3/library/csv.html#csv.writer
     """
+    with open(coverage_file, "w", newline="") as write_f:
+        coverage_w = csv.writer(write_f, delimiter="\t")
+        for gene in coverage_statistics:
+            coverage_w.writerow(gene)
 
+    write_f.close()
     # Write the coverage_statistics to a CSV file
-    pass
+    return coverage_w
+
 
 def calculate_mapping_coverage(coverage_dict):
     """ Function to calculate all coverage statistics on a per-gene basis
@@ -53,20 +67,16 @@ def calculate_mapping_coverage(coverage_dict):
         Note: this function is taken from deliverable 5 and slightly modified
     """
 
-    ## Create an empty list that will hold all data to save
+    # Create an empty list that will hold all data to save
     statistics = []
 
-    ## Iterate over all the genes in the coverage_dict getting the gene name
-    ## and list with coverage data for that gene
+    # Iterate over all the genes in the coverage_dict getting the gene name
+    for key in coverage_dict:
+        total = sum(coverage_dict[key])  # Gene length covered
+        average = total/len(coverage_dict[key])  # Average coverage
+        low_cov = sum(map(lambda x: x < 30, coverage_dict[key]))  # Number of low coverage
+        statistics.append((key, total, average, low_cov))
 
-    ## Put the following elements in a single tuple and append to the
-    ## statistics list.
-    ##      * Gene name,
-    ##      * Total positions (gene length covered)
-    ##      * Average Coverage (use round with one position)
-    ##      * Number of low-coverage positions (coverage value < 30)
-
-    ## Return the list of tuples holding the data
     return statistics
 
 ######
