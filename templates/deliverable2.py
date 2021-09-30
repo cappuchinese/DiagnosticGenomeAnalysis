@@ -44,11 +44,15 @@ def parse_pileup_data(pileup_data, bed_dict):
     coverage_dict = {}
 
     for line in pileup_data:
+        # Loop through the pileup_data and extract the chromosome
         line = line.split("\t")
         chromosome = line[0].split("r")[1]
         if chromosome in bed_dict:
+            # Save the location of the pile_coord
             pile_coord = int(line[1])
+            # Loop through the bed_dict for each exon
             for exon in bed_dict[chromosome]:
+                # If pile_coord is inbetween the exon location, save it to the coverage_dict
                 if pile_coord in range(exon[0], exon[1]):
                     if bed_dict[chromosome][1][2] not in coverage_dict:
                         coverage_dict[bed_dict[chromosome][1][2]] = []
