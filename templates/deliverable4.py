@@ -107,11 +107,11 @@ def parse_pileup_data(pileup_data, bed_dict):
             for exon in bed_dict[chromosome]:
                 # If pile_coord is inbetween the exon location, save it to the coverage_dict
                 if pile_coord in range(exon[0], exon[1]):
-                    if bed_dict[chromosome][1][2] not in coverage_dict:
-                        coverage_dict[bed_dict[chromosome][1][2]] = []
-                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
+                    if exon[2] not in coverage_dict:
+                        coverage_dict[exon[2]] = []
+                        coverage_dict[exon[2]].append(int(line[3]))
                     else:
-                        coverage_dict[bed_dict[chromosome][1][2]].append(int(line[3]))
+                        coverage_dict[exon[2]].append(int(line[3]))
 
     # Return coverage dictionary
     return coverage_dict
@@ -176,9 +176,9 @@ def main(args):
             print('Warning: given pileup file does not have a ".pileup" extension.')
         output_file = args[3]
     else:
-        bed_file = 'data/example.bed'
-        pileup_file = 'data/example.pileup'
-        output_file = 'data/d4_output.csv'
+        bed_file = 'data/Galaxy22-[CAR_0394321__en-20_target_v2.BED.txt].bed'
+        pileup_file = 'data/Galaxy24-[MPileup_on_data_21].pileup'
+        output_file = 'd4_output.csv'
 
     # STEP 1: Read BED data
     print('Reading BED data from', bed_file)
