@@ -46,14 +46,12 @@ def parse_vcf_data(vcf_input_file, frequency, vcf_output_file):
     with open(vcf_output_file, "w") as output_vcf:
         for line in lines:
             # Write the first comment-lines (header) directly to the output file
-            if line.startswith("##"):
+            if line.startswith("#"):
                 output_vcf.writelines(line)
-            elif line.startswith("#C"):
-                pass  # Pass the format-header line
             else:
                 line = line.split()
                 freq = float(line[9].split(":")[6].split("%")[0])  # Parse to get the frequency
-                if freq > frequency:  #Compare the 'FREQ' field with the `frequency` value
+                if freq >= frequency:  # Compare the 'FREQ' field with the `frequency` value
                     output_vcf.writelines("\t".join(line) + "\n")  # Write the line to output
 
     return output_vcf
@@ -66,27 +64,15 @@ def main(args):
     # Try to read input arguments from the commandline.
     # *After* testing, make sure the program gives proper errors if input is missing
 
-    if len(args) > 1:
-        parser = argparse.ArgumentParser()
-        parser.add_argument("input", metavar="I", type=open, nargs=1,
-                            help="input vcf file")
-        parser.add_argument("frequency", metavar="F", type=float, nargs=1,
-                            help="frequency threshold")
-        parser.add_argument("output", metavar="O", type=argparse.FileType("w"),
-                            help="output vcf file")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input", metavar="I", help="input vcf file")
+    parser.add_argument("frequency", metavar="F", type=float, help="frequency threshold")
+    parser.add_argument("output", metavar="O", help="output vcf file")
 
-        vcf_file = args[1]
-        frequency = int(args[2])
-        out_vcf = args[3]
-
-    else:
-        print('Warning, no arguments given, using default values (testing only)...')
-        vcf_file = 'data/example.vcf'
-        out_vcf = 'data/d5_output.vcf'
-        frequency = 30
+    arg = parser.parse_args()
 
     # Process the VCF-file
-    parse_vcf_data(vcf_file, frequency, out_vcf)
+    parse_vcf_data(arg.input, arg.frequency, arg.output)
 
     return 0
 
