@@ -37,7 +37,7 @@ def parse_tsv(tsv_lines):
     header = tsv_lines[0].strip().split("\t")
     result_list = []
     for line in tsv_lines:
-        line = line.strip("\n").split("\t")
+        line = line.split("\t")
         for col in summary:
             result_list.append(f"{header[col]}: {line[col]}")
     result_list = "\t".join(result_list)
@@ -47,15 +47,15 @@ def parse_tsv(tsv_lines):
 def main():
     """ Main function """
 
-    # Args parser
-    parser = argparse.ArgumentParser()
-    parser.add_argument("input", help="input tsv file")
-    parser.add_argument("output", help="output file?")
-
-    args = parser.parse_args()
+    # Args parser (uncomment to use in terminal)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("input", help="input tsv file")
+    # parser.add_argument("output", help="output file?")
+    #
+    # args = parser.parse_args()
 
     # Process the TSV file
-    lines = open_tsv_file(args.input)
+    lines = open_tsv_file("data/example_tsv.txt")
     parse_tsv(lines)
 
 
