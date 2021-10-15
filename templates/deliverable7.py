@@ -43,6 +43,10 @@ def get_gene_name(gene_name):
     the main function below and execute this program before making any changes.
     """
 
+    matches = re.match(r"RefSeq: .+", gene_name)
+    for match in matches:
+        match.split(",")
+
     ## Remove the following print() statement after the first time
     print("**INPUT GENE**:", gene_name)
     gene = ''

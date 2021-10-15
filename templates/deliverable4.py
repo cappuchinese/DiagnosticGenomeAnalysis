@@ -129,7 +129,7 @@ def calculate_mapping_coverage(coverage_dict):
 
     # Iterate over all the genes in the coverage_dict getting the gene name
     for key in coverage_dict:
-        total = sum(coverage_dict[key])  # Gene length covered
+        total = len(coverage_dict[key])  # Gene length covered
         average = total/len(coverage_dict[key])  # Average coverage
         low_cov = sum(map(lambda x: x < 30, coverage_dict[key]))  # Number of low coverage
         statistics.append((key, total, average, low_cov))

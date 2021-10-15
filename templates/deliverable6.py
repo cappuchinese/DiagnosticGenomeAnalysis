@@ -8,40 +8,69 @@ Program for parsing and filtering ANNOVAR data.
 
 # META VARIABLES
 __author__ = "Lisa Hu"
-__status__ = "Uncomplete"
+__status__ = "In progress"
 __version__ = "2021.d6.v1"
 
 # IMPORT
+import operator
 import sys
 import argparse
+import re
 
 
-def open_tsv_file(filename):
+def parse_tsv(filename):
     """
-    Open TSV file
+    Open TSV file and parse
     :param filename:
     :return:
     """
-    with open(filename) as tsv_file:
+    with open(filename) as tsv_file:  # Open TSV file
         lines = tsv_file.readlines()
-    return lines
+
+    summary, data_lines = [0, 3, 16], [15, 27, *range(33, 36), -1]  # Columns
+    header = lines[0].split("\t")  # The header line
+
+    for line in lines:  # Iterate through the TSV lines
+        if line.startswith("chromosome"):  # Skip the header line
+            continue
+        line = line.split("\t")
+        columns = [*summary, *data_lines]
+        getter = operator.itemgetter(*columns)
+        header = getter(header)  # Error: Tuple index out of range
+        print(header)
+        zipped = zip(header, line)
 
 
-def parse_tsv(tsv_lines):
+    # Uncomment for printed summary
+    # result_list = []
+    #     line = line.split("\t")  # Split per tabular
+    #     for col in summary:  # The output header line
+    #         result_list.append(f"{header[col]}: {line[col]}\t")
+    #         if col == 16:  # Newline after the last header
+    #             result_list.append("\n")
+    #     for column in data_lines:  # The rest of the data
+    #         result_list.append(f"\t{header[column]}: {line[column]}\n")
+    # results = "".join(result_list)
+    # print(results)
+
+    # return results
+
+
+def re_test(results):
     """
-    Parse opened TSV file
-    :param tsv_lines:
+
+    :param results:
     :return:
     """
-    summary = [0, 3, 16, 15, 16, 27, 33, 34, 35, 36, -1]
-    header = tsv_lines[0].strip().split("\t")
-    result_list = []
-    for line in tsv_lines:
-        line = line.split("\t")
-        for col in summary:
-            result_list.append(f"{header[col]}: {line[col]}")
-    result_list = "\t".join(result_list)
-    print(result_list)
+    matches = re.findall(r"(RefSeq_Gene: \S+)", results)
+    for match in matches:
+        genes = match.split(" ")[1]
+        if "," in genes:
+            genes = genes.split(",")
+            for gene in genes:
+                if "NONE" or "LOC" or "LINC" in gene:
+                    gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
+
 
 
 def main():
@@ -55,9 +84,13 @@ def main():
     # args = parser.parse_args()
 
     # Process the TSV file
-    lines = open_tsv_file("data/example_tsv.txt")
-    parse_tsv(lines)
+    results = parse_tsv("data/example_tsv.txt")
+    re_test(results)
 
 
 if __name__ == "__main__":
     main()
+
+# Uncomment to use in terminal
+# if __name__ == "__main__":
+#     sys.exit(main(sys.argv))
