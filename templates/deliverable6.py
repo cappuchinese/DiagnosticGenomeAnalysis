@@ -27,19 +27,22 @@ def parse_tsv(filename):
     with open(filename) as tsv_file:  # Open TSV file
         lines = tsv_file.readlines()
 
-    summary, data_lines = [0, 3, 16], [15, 27, *range(33, 36), -1]  # Columns
-    header = lines[0].split("\t")  # The header line
+    summary, data_lines = [0, 3, 16], [15, 27, *range(33, 36), 55]  # Columns
+    header = lines[0].strip().split("\t")  # The header line
+
+    genes_list = []
+    columns = [*summary, *data_lines]
+    getter = operator.itemgetter(*columns)
+    header = getter(header)
 
     for line in lines:  # Iterate through the TSV lines
         if line.startswith("chromosome"):  # Skip the header line
             continue
-        line = line.split("\t")
-        columns = [*summary, *data_lines]
-        getter = operator.itemgetter(*columns)
-        header = getter(header)  # Error: Tuple index out of range
-        print(header)
-        zipped = zip(header, line)
-
+        line = line.strip("\n").split("\t")
+        line = getter(line)
+        test = dict(zip(header, line))
+        genes_list.append(test)
+    print(genes_list)
 
     # Uncomment for printed summary
     # result_list = []
@@ -53,24 +56,21 @@ def parse_tsv(filename):
     # results = "".join(result_list)
     # print(results)
 
-    # return results
 
-
-def re_test(results):
-    """
-
-    :param results:
-    :return:
-    """
-    matches = re.findall(r"(RefSeq_Gene: \S+)", results)
-    for match in matches:
-        genes = match.split(" ")[1]
-        if "," in genes:
-            genes = genes.split(",")
-            for gene in genes:
-                if "NONE" or "LOC" or "LINC" in gene:
-                    gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
-
+# def re_test(results):
+#     """
+#
+#     :param results:
+#     :return:
+#     """
+#     matches = re.findall(r"(RefSeq_Gene: \S+)", results)
+#     for match in matches:
+#         genes = match.split(" ")[1]
+#         if "," in genes:
+#             genes = genes.split(",")
+#             for gene in genes:
+#                 if "NONE" or "LOC" or "LINC" in gene:
+#                     gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
 
 
 def main():
