@@ -40,6 +40,8 @@ def parse_tsv(filename):
             continue
         line = line.strip("\n").split("\t")
         line = getter(line)
+        # print(line)
+        # re_test(line[2])
         test = dict(zip(header, line))
         genes_list.append(test)
     print(genes_list)
@@ -57,20 +59,20 @@ def parse_tsv(filename):
     # print(results)
 
 
-# def re_test(results):
+# def re_test(genes):
 #     """
-#
-#     :param results:
+# `   Gene name parsing using regex
+#     :param genes:
 #     :return:
 #     """
-#     matches = re.findall(r"(RefSeq_Gene: \S+)", results)
-#     for match in matches:
-#         genes = match.split(" ")[1]
-#         if "," in genes:
-#             genes = genes.split(",")
-#             for gene in genes:
-#                 if "NONE" or "LOC" or "LINC" in gene:
-#                     gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
+#     # matches = re.findall(r"(RefSeq_Gene: \S+)", gene_line)
+#     # for match in matches:
+#     #     genes = match.split(" ")[1]
+#     if "," in genes:
+#         genes = genes.split(",")
+#         for gene in genes:
+#             if "NONE" or "LOC" or "LINC" in gene:
+#                 gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
 
 
 def main():
