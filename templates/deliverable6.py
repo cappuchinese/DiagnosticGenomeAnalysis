@@ -3,13 +3,18 @@
 """
 BFV2 Theme 05 - Genomics - Sequencing Project
 
-Program for parsing and filtering ANNOVAR data.
+Deliverable 6 and 7
+-------------------
+Program for parsing and filtering ANNOVAR data. Filtering gene names from 'RefSeq_Gene' with Regex.
+
+    Usage:
+        python3 deliverable6.py
 """
 
 # META VARIABLES
 __author__ = "Lisa Hu"
 __status__ = "In progress"
-__version__ = "2021.d6.v1"
+__version__ = "2021.d6-7.v1"
 
 # IMPORT
 import operator
@@ -27,11 +32,17 @@ def parse_tsv(filename):
     with open(filename) as tsv_file:  # Open TSV file
         lines = tsv_file.readlines()
 
-    summary, data_lines = [0, 3, 16], [15, 27, *range(33, 36), 55]  # Columns
     header = lines[0].strip().split("\t")  # The header line
 
     genes_list = []
-    columns = [*summary, *data_lines]
+    columns = []
+    header_names = ["chromosome", "reference", "RefSeq_Gene", "RefSeq_Func", "dbsnp138",
+                    "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV", "LJB2_PolyPhen2_HVAR",
+                    "CLINVAR"]
+
+    for col in header_names:
+        columns.append(header.index(col))
+
     getter = operator.itemgetter(*columns)
     header = getter(header)
 
@@ -39,12 +50,10 @@ def parse_tsv(filename):
         if line.startswith("chromosome"):  # Skip the header line
             continue
         line = line.strip("\n").split("\t")
-        line = getter(line)
-        # print(line)
-        # re_test(line[2])
+        line = list(getter(line))
+        line[2] = re_test(line[2])
         test = dict(zip(header, line))
         genes_list.append(test)
-    print(genes_list)
 
     # Uncomment for printed summary
     # result_list = []
@@ -59,39 +68,62 @@ def parse_tsv(filename):
     # print(results)
 
 
-# def re_test(genes):
-#     """
-# `   Gene name parsing using regex
-#     :param genes:
-#     :return:
-#     """
-#     # matches = re.findall(r"(RefSeq_Gene: \S+)", gene_line)
-#     # for match in matches:
-#     #     genes = match.split(" ")[1]
-#     if "," in genes:
-#         genes = genes.split(",")
-#         for gene in genes:
-#             if "NONE" or "LOC" or "LINC" in gene:
-#                 gene = re.sub(r"(NONE|LOC\d+|LINC\d+)", "-", gene)
+def re_test(genes):
+    """
+`   Gene name parsing using regex
+    :param genes:
+    :return:
+    """
+    if genes:  # Pass last NoneType
+        genes = genes.strip("\"")  # Strip the quotes around the input
+        if ";" in genes:  # Replace semicolon with comma
+            genes = genes.replace(";", ",")
+
+        if "NONE" or "LOC" or "LINC" in genes:  # Look for NONE LOC LINC
+            pattern = r"NONE\(dist=NONE\)|LOC\d+[,]?|LINC\d+[,]?|\(dist=\d+\)|\(N.*"
+            cleared = re.sub(pattern, "", genes)  # Replace with regex
+
+            # Delete unnecessary commas and
+            if cleared == ",":
+                result = cleared.replace(",", "-")
+                return result
+
+            elif cleared == "":
+                return "-"
+
+            elif cleared.startswith(",") or cleared.endswith(","):
+                result = cleared.strip(",")
+                return result
+
+            elif "," in cleared:
+                result = cleared.replace(",", "/")
+                return result
+
+            else:
+                return cleared
+
+        else:
+            return genes.split("(")[0]
 
 
 def main():
     """ Main function """
 
-    # Args parser (uncomment to use in terminal)
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("input", help="input tsv file")
-    # parser.add_argument("output", help="output file?")
-    #
-    # args = parser.parse_args()
-
     # Process the TSV file
-    results = parse_tsv("data/example_tsv.txt")
-    re_test(results)
+    parse_tsv("data/Galaxy30-[_ANNOVAR_Annotated_variants_on_data_26].tsv")
 
 
 if __name__ == "__main__":
     main()
+
+    # Args parser (uncomment to use in terminal)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("input", help="input tsv file")
+    #
+    # args = parser.parse_args()
+
+    # parse_tsv(args.input)
+
 
 # Uncomment to use in terminal
 # if __name__ == "__main__":
