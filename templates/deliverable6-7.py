@@ -17,9 +17,10 @@ __status__ = "In progress"
 __version__ = "2021.d6-7.v1"
 
 # IMPORT
+# Uncomment to use in terminal
+# import sys
+# import argparse
 import operator
-import sys
-import argparse
 import re
 
 
@@ -89,7 +90,8 @@ def re_test(genes):
                 return result
 
             elif cleared == "":
-                return "-"
+                result = "-"
+                return result
 
             elif cleared.startswith(",") or cleared.endswith(","):
                 result = cleared.strip(",")
@@ -103,7 +105,8 @@ def re_test(genes):
                 return cleared
 
         else:
-            return genes.split("(")[0]
+            result = genes.split("(")[0]
+            return result
 
 
 def main():
@@ -116,6 +119,7 @@ def main():
 if __name__ == "__main__":
     main()
 
+    # Uncomment to use in terminal
     # Args parser (uncomment to use in terminal)
     # parser = argparse.ArgumentParser()
     # parser.add_argument("input", help="input tsv file")
@@ -125,6 +129,5 @@ if __name__ == "__main__":
     # parse_tsv(args.input)
 
 
-# Uncomment to use in terminal
 # if __name__ == "__main__":
 #     sys.exit(main(sys.argv))
