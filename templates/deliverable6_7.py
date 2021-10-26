@@ -22,6 +22,7 @@ __version__ = "2021.d6-7.v1"
 # import argparse
 import operator
 import re
+import csv
 
 
 def parse_tsv(filename):
@@ -55,6 +56,8 @@ def parse_tsv(filename):
         line[2] = re_test(line[2])
         test = dict(zip(header, line))
         genes_list.append(test)
+
+    return genes_list
 
     # Uncomment for printed summary
     # result_list = []
@@ -109,11 +112,24 @@ def re_test(genes):
             return result
 
 
+def write_to_csv(genes_list):
+    """
+    Write out all the dictionaries of data into text-file
+    :param genes_list:
+    :return:
+    """
+    with open("data/d6_7_output.csv", "w") as out_file:
+        fc = csv.DictWriter(out_file, fieldnames=genes_list[0].keys())
+        fc.writeheader()
+        fc.writerows(genes_list)
+
+
 def main():
     """ Main function """
 
     # Process the TSV file
-    parse_tsv("data/Galaxy30-[_ANNOVAR_Annotated_variants_on_data_26].tsv")
+    genes = parse_tsv("data/Galaxy30-[_ANNOVAR_Annotated_variants_on_data_26].tsv")
+    write_to_csv(genes)
 
 
 if __name__ == "__main__":
