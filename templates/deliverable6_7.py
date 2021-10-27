@@ -16,7 +16,7 @@ __author__ = "Lisa Hu"
 __status__ = "In progress"
 __version__ = "2021.d6-7.v1"
 
-# IMPORT
+# IMPORTS
 # Uncomment to use in terminal
 # import sys
 # import argparse
@@ -27,35 +27,35 @@ import csv
 
 def parse_tsv(filename):
     """
-    Open TSV file and parse
-    :param filename:
-    :return:
+    Function that parses the ANNOVAR data
+    :param filename: name of the file
+    :return: list of dictionaries from ANNOVAR data
     """
-    with open(filename) as tsv_file:  # Open TSV file
-        lines = tsv_file.readlines()
-
-    header = lines[0].strip().split("\t")  # The header line
-
     genes_list = []
     columns = []
     header_names = ["chromosome", "reference", "RefSeq_Gene", "RefSeq_Func", "dbsnp138",
                     "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV", "LJB2_PolyPhen2_HVAR",
                     "CLINVAR"]
 
-    for col in header_names:
-        columns.append(header.index(col))
+    with open(filename) as tsv_file:  # Open TSV file
+        lines = tsv_file.readlines()
 
-    getter = operator.itemgetter(*columns)
-    header = getter(header)
+    header = lines[0].strip().split("\t")  # The header line
+
+    for col in header_names:
+        columns.append(header.index(col))  # Indices of the columns needed in one list
+
+    getter = operator.itemgetter(*columns)  # Create getter function
+    header = getter(header)  # Get the headers
 
     for line in lines:  # Iterate through the TSV lines
         if line.startswith("chromosome"):  # Skip the header line
             continue
-        line = line.strip("\n").split("\t")
-        line = list(getter(line))
-        line[2] = re_test(line[2])
-        test = dict(zip(header, line))
-        genes_list.append(test)
+        line = line.strip("\n").split("\t")  # Split the line
+        line = list(getter(line))  # Get the necessary columns
+        line[2] = regex_parsing(line[2])  # Overwrite gene data with parsed gene name
+        gene_data = dict(zip(header, line))  # Write data into a dictionary
+        genes_list.append(gene_data)  # Put dictionary into a list
 
     return genes_list
 
@@ -72,11 +72,11 @@ def parse_tsv(filename):
     # print(results)
 
 
-def re_test(genes):
+def regex_parsing(genes):
     """
 `   Gene name parsing using regex
-    :param genes:
-    :return:
+    :param genes: gene column from ANNOVAR data
+    :return: parsed gene
     """
     if genes:  # Pass last NoneType
         genes = genes.strip("\"")  # Strip the quotes around the input
@@ -112,13 +112,14 @@ def re_test(genes):
             return result
 
 
-def write_to_csv(genes_list):
+def write_to_csv(genes_list, output_file):
     """
-    Write out all the dictionaries of data into text-file
-    :param genes_list:
+    Write out all the dictionaries of data into a file
+    :param genes_list: list of dictionaries of gene data
+    :param output_file: name of output file
     :return:
     """
-    with open("data/d6_7_output.csv", "w") as out_file:
+    with open(output_file, "w") as out_file:
         fc = csv.DictWriter(out_file, fieldnames=genes_list[0].keys())
         fc.writeheader()
         fc.writerows(genes_list)
@@ -129,7 +130,7 @@ def main():
 
     # Process the TSV file
     genes = parse_tsv("data/Galaxy30-[_ANNOVAR_Annotated_variants_on_data_26].tsv")
-    write_to_csv(genes)
+    write_to_csv(genes, "data/d6_7_output.csv")
 
 
 if __name__ == "__main__":
@@ -139,10 +140,12 @@ if __name__ == "__main__":
     # Args parser (uncomment to use in terminal)
     # parser = argparse.ArgumentParser()
     # parser.add_argument("input", help="input tsv file")
+    # parser.add_argument("output", help="output file (add file extension)")
     #
     # args = parser.parse_args()
 
-    # parse_tsv(args.input)
+    # genes = parse_tsv(args.input)
+    # write_to_file(genes, args.output)
 
 
 # if __name__ == "__main__":
