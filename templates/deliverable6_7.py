@@ -75,7 +75,7 @@ def parse_tsv(filename):
 def regex_parsing(genes):
     """
 `   Gene name parsing using regex
-    :param genes: gene column from ANNOVAR data
+    :param genes: gene name from ANNOVAR data
     :return: parsed gene
     """
     if genes:  # Pass last NoneType
@@ -87,29 +87,27 @@ def regex_parsing(genes):
             pattern = r"NONE\(dist=NONE\)|LOC\d+[,]?|LINC\d+[,]?|\(dist=\d+\)|\(N.*"
             cleared = re.sub(pattern, "", genes)  # Replace with regex
 
-            # Delete unnecessary commas and
+            # Delete unnecessary commas
             if cleared == ",":
                 result = cleared.replace(",", "-")
                 return result
 
-            elif cleared == "":
+            if cleared == "":
                 result = "-"
                 return result
 
-            elif cleared.startswith(",") or cleared.endswith(","):
+            if cleared.startswith(",") or cleared.endswith(","):
                 result = cleared.strip(",")
                 return result
 
-            elif "," in cleared:
+            if "," in cleared:
                 result = cleared.replace(",", "/")
                 return result
 
-            else:
-                return cleared
+            return cleared
 
-        else:
-            result = genes.split("(")[0]
-            return result
+        result = genes.split("(")[0]
+        return result
 
 
 def write_to_csv(genes_list, output_file):
@@ -120,9 +118,9 @@ def write_to_csv(genes_list, output_file):
     :return:
     """
     with open(output_file, "w") as out_file:
-        fc = csv.DictWriter(out_file, fieldnames=genes_list[0].keys())
-        fc.writeheader()
-        fc.writerows(genes_list)
+        writer = csv.DictWriter(out_file, fieldnames=genes_list[0].keys())
+        writer.writeheader()
+        writer.writerows(genes_list)
 
 
 def main():
