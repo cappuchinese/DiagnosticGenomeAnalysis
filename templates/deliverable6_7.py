@@ -88,23 +88,20 @@ def regex_parsing(genes):
             cleared = re.sub(pattern, "", genes)  # Replace with regex
 
             # Delete unnecessary commas
-            if cleared == ",":
-                result = cleared.replace(",", "-")
-                return result
+            match cleared:
+                case ",":
+                    return re.sub(",", "-", cleared)
+                case "":
+                    return "-"
+                case _:
+                    if cleared.startswith(",") or cleared.endswith(","):
+                        result = cleared.strip(",")
+                        return result
+                    if "," in cleared:
+                        result = cleared.replace(",", "/")
+                        return result
 
-            if cleared == "":
-                result = "-"
-                return result
-
-            if cleared.startswith(",") or cleared.endswith(","):
-                result = cleared.strip(",")
-                return result
-
-            if "," in cleared:
-                result = cleared.replace(",", "/")
-                return result
-
-            return cleared
+                    return cleared
 
         result = genes.split("(")[0]
         return result
