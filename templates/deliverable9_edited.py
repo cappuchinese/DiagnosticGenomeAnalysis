@@ -17,16 +17,16 @@ __version__ = "2021.d9.v1"
 # IMPORTS
 import sys
 import argparse
-import mysql.connector as msql
 import getpass
 import re
 import operator
+import mariadb
 
 
 class DatabaseConnector:
-
-    def __init__(self):
-        pass
+    """
+    # TODO fill DocString
+    """
 
     def run(self):
         """
@@ -41,6 +41,7 @@ class DatabaseConnector:
             "database": args.database,
             "raise_on_warnings": True
         }
+        self.data_to_db(config, "")
         # genes_list = self.parse_annovar(args.ANNO_file)
         # self.data_to_db(config, genes)
 
@@ -70,7 +71,7 @@ class DatabaseConnector:
                         "LJB2_PolyPhen2_HVAR",
                         "CLINVAR"]
 
-        with open(anno_file) as tsv_file:  # Open TSV file
+        with open(anno_file, "r") as tsv_file:  # Open TSV file
             lines = tsv_file.readlines()
 
         header = lines[0].strip().split("\t")  # The header line
@@ -109,23 +110,20 @@ class DatabaseConnector:
                 cleared = re.sub(pattern, "", genes)  # Replace with regex
 
                 # Delete unnecessary commas
-                if cleared == ",":
-                    result = cleared.replace(",", "-")
-                    return result
+                match cleared:
+                    case ",":
+                        return re.sub(",", "-", cleared)
+                    case "":
+                        return "-"
+                    case _:
+                        if cleared.startswith(",") or cleared.endswith(","):
+                            result = cleared.strip(",")
+                            return result
+                        if "," in cleared:
+                            result = cleared.replace(",", "/")
+                            return result
 
-                if cleared == "":
-                    result = "-"
-                    return result
-
-                if cleared.startswith(",") or cleared.endswith(","):
-                    result = cleared.strip(",")
-                    return result
-
-                if "," in cleared:
-                    result = cleared.replace(",", "/")
-                    return result
-
-                return cleared
+                        return cleared
 
             result = genes.split("(")[0]
             return result
@@ -137,5 +135,43 @@ class DatabaseConnector:
         :param gene_data: parsed ANNOVAR data
         :return:
         """
+        try:
+            connector = mariadb.connect(**config)
+            cursor = connector.cursor()
+
+            with open("deliverable8.sql", "r") as sql_file:
+                sql_string = sql_file.read()
+
+            cursor.execute(sql_string)
+
+        except mariadb.Error as err:
+            print(f"Error with the database:\n{err}")
+
+
+class DataModules:
+    """
+    Modules to use with database
+    """
+
+    def __init__(self):
         pass
 
+    @staticmethod
+    def add_chromosome(cursor, chromo):
+        """
+        Adds the chromosome to the chromosome table
+        :param cursor:
+        :param chromo:
+        :return:
+        """
+        cursor.execute("INSERT INTO Chromosome(chr) VALUES ? ON DUPLICATE KEY UPDATE chr=?", chromo)
+
+    @staticmethod
+    def add_gene(cursor, gene):
+        """
+        Adds the gene to the genes table
+        :param cursor:
+        :param gene:
+        :return:
+        """
+        cursor.execute("INSERT INTO Genes(gene) VALUES ?", gene)
