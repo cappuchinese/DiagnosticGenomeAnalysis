@@ -28,6 +28,9 @@ class DatabaseConnector:
     # TODO fill DocString
     """
 
+    def __init__(self):
+        pass
+
     def run(self):
         """
         Main function to run program
@@ -35,18 +38,20 @@ class DatabaseConnector:
         """
         args = self._args_parsing()
         config = {
+            "host": args.host,
             "user": args.user,
             "password": args.password,
-            "host": args.host,
             "database": args.database,
-            "raise_on_warnings": True
         }
-        self.data_to_db(config, "")
-        # genes_list = self.parse_annovar(args.ANNO_file)
-        # self.data_to_db(config, genes)
+        genes = self.parse_annovar(args.ANNO_file)
+        self.data_to_db(config, genes)
 
     @staticmethod
     def _args_parsing():
+        """
+        Function to parse terminal commands
+        :return:
+        """
         parser = argparse.ArgumentParser()
         parser.add_argument("host", metavar="H", help="Host of database")
         parser.add_argument("user", metavar="U", help="Name of the user")
@@ -136,7 +141,8 @@ class DatabaseConnector:
         :return:
         """
         try:
-            connector = mariadb.connect(**config)
+            connector = mariadb.connect(host=config["host"], user=config["user"],
+                                        passwd=config["password"], db=config["database"])
             cursor = connector.cursor()
 
             with open("deliverable8.sql", "r") as sql_file:
@@ -175,3 +181,8 @@ class DataModules:
         :return:
         """
         cursor.execute("INSERT INTO Genes(gene) VALUES ?", gene)
+
+
+if __name__ == "__main__":
+    ing = DatabaseConnector()
+    sys.exit(ing.run())
