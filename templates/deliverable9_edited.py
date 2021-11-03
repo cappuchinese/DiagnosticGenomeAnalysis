@@ -8,7 +8,10 @@ Deliverable 9
 Deliverable program that interacts with database to fill.
 
     usage:
-        python3 deliverable9.py database_host database_username database_password ANNOVAR_file
+        python3 deliverable9.py database_host database_username database_name
+            database_password ANNOVAR_file
+    version:
+        python 3.10
 """
 
 __author__ = "Lisa Hu"
@@ -16,57 +19,34 @@ __version__ = "2021.d9.v1"
 
 # IMPORTS
 import sys
-import argparse
-import getpass
 import re
 import operator
 import mariadb
 
+from Argsparsing import _args_parsing
 
-class DatabaseConnector:
+
+class AnnoParser:
     """
-    # TODO fill DocString
+    Parsing the ANNOVAR file
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, anno_file):
+        self.anno_file = anno_file
 
-    def run(self):
+    def open_file(self):
         """
-        Main function to run program
+        Open ANNOVAR file
         :return:
         """
-        args = self._args_parsing()
-        config = {
-            "host": args.host,
-            "user": args.user,
-            "password": args.password,
-            "database": args.database,
-        }
-        genes = self.parse_annovar(args.ANNO_file)
-        self.data_to_db(config, genes)
+        with open(self.anno_file, "r", encoding="utf8") as tsv_file:  # Open TSV file
+            lines = tsv_file.readlines()
 
-    @staticmethod
-    def _args_parsing():
-        """
-        Function to parse terminal commands
-        :return:
-        """
-        parser = argparse.ArgumentParser()
-        parser.add_argument("host", metavar="H", help="Host of database")
-        parser.add_argument("user", metavar="U", help="Name of the user")
-        parser.add_argument("database", metavar="D", help="Name of database")
-        parser.add_argument("password", metavar="P", type=getpass.getpass(),
-                            help="Password of the user")
-        parser.add_argument("ANNO_file", metavar="F", help="ANNOVAR file")
-        args = parser.parse_args()
+        return lines
 
-        return args
-
-    def parse_annovar(self, anno_file):
+    def parse_annovar(self):
         """
         Function from deliverable 6-7 to parse data
-        :param anno_file: ANNOVAR file
         :return: Parsed ANNOVAR data
         """
         genes_list = []
@@ -76,8 +56,7 @@ class DatabaseConnector:
                         "LJB2_PolyPhen2_HVAR",
                         "CLINVAR"]
 
-        with open(anno_file, "r") as tsv_file:  # Open TSV file
-            lines = tsv_file.readlines()
+        lines = self.open_file()
 
         header = lines[0].strip().split("\t")  # The header line
 
@@ -115,6 +94,12 @@ class DatabaseConnector:
                 cleared = re.sub(pattern, "", genes)  # Replace with regex
 
                 # Delete unnecessary commas
+                # if cleared == ",":
+                #     result = cleared.replace(",", "-")
+                #     return result
+                # if cleared == "":
+                #     result = "-"
+                #     return result
                 match cleared:
                     case ",":
                         return re.sub(",", "-", cleared)
@@ -132,6 +117,29 @@ class DatabaseConnector:
 
             result = genes.split("(")[0]
             return result
+
+
+class DatabaseConnector:
+    """
+    # TODO fill DocString
+    """
+
+    def __init__(self, argvs, anno_data):
+        self.anno_data = anno_data
+        self.args = argvs
+
+    def run(self):
+        """
+        Main function to run program
+        :return:
+        """
+        config = {
+            "host": self.args.host,
+            "user": self.args.user,
+            "password": self.args.password,
+            "database": self.args.database,
+        }
+        self.data_to_db(config, self.anno_data)
 
     def data_to_db(self, config, gene_data):
         """
@@ -153,36 +161,38 @@ class DatabaseConnector:
         except mariadb.Error as err:
             print(f"Error with the database:\n{err}")
 
+        for item, variant in enumerate(gene_data):
+            chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosome "
+                                      f"WHERE chromosome={variant['chromosome']}")
+            gene_flag = cursor.execute(f"SELECT count({variant['RefSeq_Gene']}) FROM Genes "
+                                       f"WHERE chromosome={variant['RefSeq_Gene']}")
+            if chr_flag == 0:
+                gene_data[item]["chr_id"] = self._insert_data(cursor, "Chromosome", variant)
+            if gene_flag == 0:
+                gene_data[item]["gene_id"] = self._insert_data(cursor, "Genes", variant)
 
-class DataModules:
-    """
-    Modules to use with database
-    """
+            self._insert_data(cursor, "Variants", variant)
 
-    def __init__(self):
-        pass
+        connector.commit()
+        connector.close()
 
     @staticmethod
-    def add_chromosome(cursor, chromo):
+    def _insert_data(cursor, table, columns):
         """
         Adds the chromosome to the chromosome table
-        :param cursor:
-        :param chromo:
+        :param cursor: database cursor
+        :param table: table name
+        :param columns: data
         :return:
         """
-        cursor.execute("INSERT INTO Chromosome(chr) VALUES ? ON DUPLICATE KEY UPDATE chr=?", chromo)
+        cursor.execute(f"INSERT INTO {table} ({', '.join(columns)}) "
+                       f"VALUES ({', '.join([k for k in columns])})")
 
-    @staticmethod
-    def add_gene(cursor, gene):
-        """
-        Adds the gene to the genes table
-        :param cursor:
-        :param gene:
-        :return:
-        """
-        cursor.execute("INSERT INTO Genes(gene) VALUES ?", gene)
+        return cursor.lastrowid
 
 
 if __name__ == "__main__":
-    ing = DatabaseConnector()
+    args = _args_parsing()
+    anno_data = AnnoParser.parse_annovar(args)
+    ing = DatabaseConnector(args, anno_data)
     sys.exit(ing.run())
