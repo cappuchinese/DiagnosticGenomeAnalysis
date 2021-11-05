@@ -40,10 +40,10 @@ def parse_vcf_data(vcf_input_file, frequency, vcf_output_file):
     frequencies > frequency.
     """
 
-    with open(vcf_input_file, "r") as input_vcf:  # Open the INPUT VCF file
+    with open(vcf_input_file, "r", encoding="utf8") as input_vcf:  # Open the INPUT VCF file
         lines = input_vcf.readlines()  # Read the contents line-by-line
 
-    with open(vcf_output_file, "w") as output_vcf:
+    with open(vcf_output_file, "w", encoding="utf8") as output_vcf:
         for line in lines:
             # Write the first comment-lines (header) directly to the output file
             if line.startswith("#"):

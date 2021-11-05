@@ -37,7 +37,7 @@ def parse_tsv(filename):
                     "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV", "LJB2_PolyPhen2_HVAR",
                     "CLINVAR"]
 
-    with open(filename) as tsv_file:  # Open TSV file
+    with open(filename, "r", encoding="utf8") as tsv_file:  # Open TSV file
         lines = tsv_file.readlines()
 
     header = lines[0].strip().split("\t")  # The header line
@@ -114,7 +114,7 @@ def write_to_csv(genes_list, output_file):
     :param output_file: name of output file
     :return:
     """
-    with open(output_file, "w") as out_file:
+    with open(output_file, "w", encoding="utf8") as out_file:
         writer = csv.DictWriter(out_file, fieldnames=genes_list[0].keys())
         writer.writeheader()
         writer.writerows(genes_list)

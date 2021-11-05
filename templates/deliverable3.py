@@ -37,12 +37,11 @@ def read_data(filename):
     """ This function reads in data and returns a list containing one
         line per element. """
 
-    opened_f = open(filename, "r")  # Open the file given the filename stored in 'filename'
-    lines_list = []
-    for line in opened_f:  # Iterate through lines of file
-        lines_list.append(line)  # Add line to list
-
-    opened_f.close()
+    # Open the file
+    with open(filename, "r", encoding="utf8") as opened_f:
+        lines_list = []
+        for line in opened_f:  # Iterate through lines of file
+            lines_list.append(line)  # Add line to list
 
     return lines_list  # Return a list where each line is a list element
 
@@ -51,7 +50,7 @@ def save_coverage_statistics(coverage_file, coverage_statistics):
     """ Writes coverage data to a tabular file using Python's
         csv library: https://docs.python.org/3/library/csv.html#csv.writer
     """
-    with open(coverage_file, "w", newline="") as write_f:
+    with open(coverage_file, "w", newline="", encoding="utf8") as write_f:
         coverage_w = csv.writer(write_f, delimiter="\t")
         for gene in coverage_statistics:
             coverage_w.writerow(gene)
