@@ -23,7 +23,7 @@ import re
 import operator
 import mariadb
 
-from Argsparsing import _args_parsing
+from argsparsing import _args_parsing
 
 
 class AnnoParser:
@@ -51,10 +51,9 @@ class AnnoParser:
         """
         genes_list = []
         columns = []
-        header_names = ["chromosome", "reference", "RefSeq_Gene", "RefSeq_Func", "dbsnp138",
-                        "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV",
-                        "LJB2_PolyPhen2_HVAR",
-                        "CLINVAR"]
+        header_names = ["chromosome", "reference", "observed", "RefSeq_Gene", "RefSeq_Func",
+                        "dbsnp138", "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV",
+                        "LJB2_PolyPhen2_HVAR", "CLINVAR"]
 
         lines = self.file_opener()
 
@@ -66,12 +65,14 @@ class AnnoParser:
         getter = operator.itemgetter(*columns)  # Create getter function
         header = getter(header)  # Get the headers
 
+        gene_index = header.index("RefSeq_Gene")
         for line in lines:  # Iterate through the TSV lines
             if line.startswith("chromosome"):  # Skip the header line
                 continue
             line = line.strip("\n").split("\t")  # Split the line
             line = list(getter(line))  # Get the necessary columns
-            line[2] = self._regex_parsing(line[2])  # Overwrite gene data with parsed gene name
+            # Overwrite gene data with parsed gene name
+            line[gene_index] = self._regex_parsing(line[gene_index])
             gene_data = dict(zip(header, line))  # Write data into a dictionary
             genes_list.append(gene_data)  # Put dictionary into a list
 
@@ -115,13 +116,19 @@ class AnnoParser:
 
 class DatabaseConnector:
     """
-    # TODO fill DocString
+    Module to connect with database via terminal commands.
     """
 
-    def __init__(self, argvs, anno_data, password):
-        self.anno_data = anno_data
+    def __init__(self, argvs, annovar_data, passwd):
+        """
+        Initialize
+        :param argvs: terminal commands
+        :param annovar_data: parse ANNOVAR data
+        :param passwd: password to database
+        """
+        self.anno_data = annovar_data
         self.args = argvs
-        self.password = password
+        self.password = passwd
 
     def run(self):
         """
@@ -144,48 +151,58 @@ class DatabaseConnector:
         :return:
         """
         try:
+            # Make connection to database
             connector = mariadb.connect(host=config["host"], user=config["user"],
                                         passwd=config["password"], db=config["database"])
             cursor = connector.cursor()
 
-            with open("deliverable8.sql", "r") as sql_file:
+            # Open SQL script
+            with open("deliverable8.sql", "r", encoding="utf8") as sql_file:
                 sql_string = sql_file.read()
 
+            # Split the file into the different commands
             commands = sql_string.replace("\n", "").replace("\t", " ").split(";")
-            # print("000: ", commands)
+
+            # Execute each command
             for command in commands:
-                # print("001: ", command+";")
                 try:
                     cursor.execute(command+";")
                 except mariadb.OperationalError:
                     print("Operational Error")
             connector.commit()
 
+        # Catch possible errors (connection or execution of script)
         except mariadb.Error as err:
             print(f"Error with the database:\n{err}")
 
         for item, variant in enumerate(gene_data):
+            # Check if the chromosome or gene already exist in the tables
             try:
-                chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosomes "
-                                          f"WHERE chromosome='{variant['chromosome']}';")
+                cursor.execute(f"SELECT * FROM Chromosomes "
+                               f"WHERE chromosome='{variant['chromosome']}';")
+                chr_flag = cursor.fetchone()
             except mariadb.OperationalError:
-                chr_flag = 0
+                chr_flag = None
+
             try:
-                gene_flag = cursor.execute(f"SELECT count('RefSeq_Gene') FROM Genes "
-                                           f"WHERE RefSeq_Gene='{variant['RefSeq_Gene']}';")
+                cursor.execute(f"SELECT * FROM Genes "
+                               f"WHERE RefSeq_Gene='{variant['RefSeq_Gene']}';")
+                gene_flag = cursor.fetchone()
             except mariadb.OperationalError:
-                gene_flag = 0
-            # chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosome "
-            #                           f"WHERE chromosome='{variant['chromosome']}';")
-            # gene_flag = cursor.execute(f"SELECT count('RefSeq_Gene') FROM Genes "
-            #                            f"WHERE RefSeq_Gene='{variant['RefSeq_Gene']}';")
+                gene_flag = None
 
-            print(f"chr: {chr_flag}   gene: {gene_flag}")
-
+            # Insert the data if chromosome does not exist in table
             if chr_flag is None:
                 gene_data[item]['chr_id'] = self._insert_data(cursor, 'Chromosomes', variant)
-            if gene_flag == 0:
+            # Else the chromosome id is fetched from earlier SELECT query
+            else:
+                gene_data[item]['chr_id'] = chr_flag[0]
+
+            # Same as above but for Genes table
+            if gene_flag is None:
                 gene_data[item]['gene_id'] = self._insert_data(cursor, 'Genes', variant)
+            else:
+                gene_data[item]['gene_id'] = gene_flag[0]
 
             self._insert_data(cursor, 'Variants', variant)
 
@@ -201,22 +218,21 @@ class DatabaseConnector:
         :param data: variant data
         :return:
         """
-        cursor.execute('desc %s' % table)
-        tdescription = cursor.fetchall()
-        # print("1: ", tdescription)
-        # Get the actual columns from the table
+        cursor.execute(f'DESCRIBE {table}')
+        tdescription = cursor.fetchall()  # Get information of table
+
+        # Get the column names from the table
         table_columns = [column[0] for column in tdescription]
-        print("2: ", table_columns)
-        print("3: ", data)
         # Match with the columns in the input-data
         data_columns = [column for column in table_columns if column in data.keys()]
-        print("4: ", data_columns)
-        print("5: ", ', '.join(data_columns))
+
         test = []
         for col in data_columns:
             test.append(data[col])
+
         value_query = ', '.join(f"'{data[k]}'" for k in data_columns)
-        print("6: ", value_query)
+
+        # Execute insert query
         cursor.execute(f"INSERT INTO {table} ({', '.join(data_columns)}) "
                        f"VALUES ({value_query});")
 
@@ -225,7 +241,9 @@ class DatabaseConnector:
 
 if __name__ == "__main__":
     args, password = _args_parsing()
+    print("Parsing ANNOVAR file...")
     annoparser = AnnoParser(args.anno_file)
     anno_data = annoparser.parse_annovar()
+    print("Filling database...")
     ing = DatabaseConnector(args, anno_data, password)
     sys.exit(ing.run())
