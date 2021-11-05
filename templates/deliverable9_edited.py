@@ -225,12 +225,8 @@ class DatabaseConnector:
         table_columns = [column[0] for column in tdescription]
         # Match with the columns in the input-data
         data_columns = [column for column in table_columns if column in data.keys()]
-
-        test = []
-        for col in data_columns:
-            test.append(data[col])
-
-        value_query = ', '.join(f"'{data[k]}'" for k in data_columns)
+        # Join the values from the data
+        value_query = ', '.join(f"'{data[variant_info]}'" for variant_info in data_columns)
 
         # Execute insert query
         cursor.execute(f"INSERT INTO {table} ({', '.join(data_columns)}) "
