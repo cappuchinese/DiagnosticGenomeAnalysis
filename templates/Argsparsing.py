@@ -17,9 +17,9 @@ def _args_parsing():
     parser.add_argument("host", metavar="H", help="Host of database")
     parser.add_argument("user", metavar="U", help="Name of the user")
     parser.add_argument("database", metavar="D", help="Name of database")
-    parser.add_argument("-p", "password", action="store_true", dest="password",
-                        help="Password of the user")
     parser.add_argument("anno_file", metavar="F", help="ANNOVAR file")
+    parser.add_argument("-p", "--password", action="store_true", dest="password",
+                        help="Password of the user")
     args = parser.parse_args()
 
     if args.password:

@@ -34,7 +34,7 @@ class AnnoParser:
     def __init__(self, anno_file):
         self.anno_file = anno_file
 
-    def open_file(self):
+    def file_opener(self):
         """
         Open ANNOVAR file
         :return:
@@ -56,7 +56,7 @@ class AnnoParser:
                         "LJB2_PolyPhen2_HVAR",
                         "CLINVAR"]
 
-        lines = self.open_file()
+        lines = self.file_opener()
 
         header = lines[0].strip().split("\t")  # The header line
 
@@ -94,26 +94,20 @@ class AnnoParser:
                 cleared = re.sub(pattern, "", genes)  # Replace with regex
 
                 # Delete unnecessary commas
-                # if cleared == ",":
-                #     result = cleared.replace(",", "-")
-                #     return result
-                # if cleared == "":
-                #     result = "-"
-                #     return result
-                match cleared:
-                    case ",":
-                        return re.sub(",", "-", cleared)
-                    case "":
-                        return "-"
-                    case _:
-                        if cleared.startswith(",") or cleared.endswith(","):
-                            result = cleared.strip(",")
-                            return result
-                        if "," in cleared:
-                            result = cleared.replace(",", "/")
-                            return result
+                if cleared == ",":
+                    result = cleared.replace(",", "-")
+                    return result
+                if cleared == "":
+                    result = "-"
+                    return result
+                if cleared.startswith(",") or cleared.endswith(","):
+                    result = cleared.strip(",")
+                    return result
+                if "," in cleared:
+                    result = cleared.replace(",", ",")
+                    return result
 
-                        return cleared
+                return cleared
 
             result = genes.split("(")[0]
             return result
@@ -124,9 +118,10 @@ class DatabaseConnector:
     # TODO fill DocString
     """
 
-    def __init__(self, argvs, anno_data):
+    def __init__(self, argvs, anno_data, password):
         self.anno_data = anno_data
         self.args = argvs
+        self.password = password
 
     def run(self):
         """
@@ -136,7 +131,7 @@ class DatabaseConnector:
         config = {
             "host": self.args.host,
             "user": self.args.user,
-            "password": self.args.password,
+            "password": self.password,
             "database": self.args.database,
         }
         self.data_to_db(config, self.anno_data)
@@ -156,43 +151,81 @@ class DatabaseConnector:
             with open("deliverable8.sql", "r") as sql_file:
                 sql_string = sql_file.read()
 
-            cursor.execute(sql_string)
+            commands = sql_string.replace("\n", "").replace("\t", " ").split(";")
+            # print("000: ", commands)
+            for command in commands:
+                # print("001: ", command+";")
+                try:
+                    cursor.execute(command+";")
+                except mariadb.OperationalError:
+                    print("Operational Error")
+            connector.commit()
 
         except mariadb.Error as err:
             print(f"Error with the database:\n{err}")
 
         for item, variant in enumerate(gene_data):
-            chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosome "
-                                      f"WHERE chromosome={variant['chromosome']}")
-            gene_flag = cursor.execute(f"SELECT count({variant['RefSeq_Gene']}) FROM Genes "
-                                       f"WHERE chromosome={variant['RefSeq_Gene']}")
-            if chr_flag == 0:
-                gene_data[item]["chr_id"] = self._insert_data(cursor, "Chromosome", variant)
+            try:
+                chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosomes "
+                                          f"WHERE chromosome='{variant['chromosome']}';")
+            except mariadb.OperationalError:
+                chr_flag = 0
+            try:
+                gene_flag = cursor.execute(f"SELECT count('RefSeq_Gene') FROM Genes "
+                                           f"WHERE RefSeq_Gene='{variant['RefSeq_Gene']}';")
+            except mariadb.OperationalError:
+                gene_flag = 0
+            # chr_flag = cursor.execute(f"SELECT count('chromosome') FROM Chromosome "
+            #                           f"WHERE chromosome='{variant['chromosome']}';")
+            # gene_flag = cursor.execute(f"SELECT count('RefSeq_Gene') FROM Genes "
+            #                            f"WHERE RefSeq_Gene='{variant['RefSeq_Gene']}';")
+
+            print(f"chr: {chr_flag}   gene: {gene_flag}")
+
+            if chr_flag is None:
+                gene_data[item]['chr_id'] = self._insert_data(cursor, 'Chromosomes', variant)
             if gene_flag == 0:
-                gene_data[item]["gene_id"] = self._insert_data(cursor, "Genes", variant)
+                gene_data[item]['gene_id'] = self._insert_data(cursor, 'Genes', variant)
 
-            self._insert_data(cursor, "Variants", variant)
+            self._insert_data(cursor, 'Variants', variant)
 
-        connector.commit()
+            connector.commit()
         connector.close()
 
     @staticmethod
-    def _insert_data(cursor, table, columns):
+    def _insert_data(cursor, table, data):
         """
         Adds the chromosome to the chromosome table
         :param cursor: database cursor
         :param table: table name
-        :param columns: data
+        :param data: variant data
         :return:
         """
-        cursor.execute(f"INSERT INTO {table} ({', '.join(columns)}) "
-                       f"VALUES ({', '.join([k for k in columns])})")
+        cursor.execute('desc %s' % table)
+        tdescription = cursor.fetchall()
+        # print("1: ", tdescription)
+        # Get the actual columns from the table
+        table_columns = [column[0] for column in tdescription]
+        print("2: ", table_columns)
+        print("3: ", data)
+        # Match with the columns in the input-data
+        data_columns = [column for column in table_columns if column in data.keys()]
+        print("4: ", data_columns)
+        print("5: ", ', '.join(data_columns))
+        test = []
+        for col in data_columns:
+            test.append(data[col])
+        value_query = ', '.join(f"'{data[k]}'" for k in data_columns)
+        print("6: ", value_query)
+        cursor.execute(f"INSERT INTO {table} ({', '.join(data_columns)}) "
+                       f"VALUES ({value_query});")
 
         return cursor.lastrowid
 
 
 if __name__ == "__main__":
-    args = _args_parsing()
-    anno_data = AnnoParser.parse_annovar(args)
-    ing = DatabaseConnector(args, anno_data)
+    args, password = _args_parsing()
+    annoparser = AnnoParser(args.anno_file)
+    anno_data = annoparser.parse_annovar()
+    ing = DatabaseConnector(args, anno_data, password)
     sys.exit(ing.run())
