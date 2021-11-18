@@ -79,14 +79,14 @@ class AnnoParser:
             # Split the letter value from 1000g, SIFT and PolyPhen2
             for y in num_columns:
                 try:
-                    line[y] = float(line[y].split(",")[0])
+                    line[y] = line[y].split(",")[0]
                 except ValueError:
-                    line[y] = None
+                    line[y] = ""
             # Overwrite gene data with parsed gene name
             line[gene_index] = self._regex_parsing(line[gene_index])
             gene_data = dict(zip(header, line))  # Write data into a dictionary
             genes_list.append(gene_data)  # Put dictionary into a list
-
+        #print(genes_list)
         return genes_list
 
     @staticmethod
@@ -217,6 +217,13 @@ class DatabaseConnector:
 
             self._insert_data(cursor, 'Variants', variant)
 
+            cursor.execute("UPDATE Variants SET 1000g2015aug_EUR=NULL WHERE 1000g2015aug_EUR='';")
+            cursor.execute("UPDATE Variants SET LJB2_SIFT=NULL WHERE LJB2_SIFT='';")
+            cursor.execute("UPDATE Variants SET LJB2_PolyPhen2_HDIV=NULL WHERE LJB2_PolyPhen2_HDIV='';")
+            cursor.execute("ALTER TABLE Variants MODIFY COLUMN 1000g2015aug_EUR FLOAT;")
+            cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_SIFT FLOAT;")
+            cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_PolyPhen2_HDIV FLOAT;")
+
             connector.commit()
         connector.close()
 
@@ -238,6 +245,7 @@ class DatabaseConnector:
         data_columns = [column for column in table_columns if column in data.keys()]
         # Join the values from the data
         value_query = ', '.join(f"'{data[variant_info]}'" for variant_info in data_columns)
+
 
         # Execute insert query
         cursor.execute(f"INSERT INTO {table} ({', '.join(data_columns)}) "
