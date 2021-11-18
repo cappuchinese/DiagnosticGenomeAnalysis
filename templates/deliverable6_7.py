@@ -33,9 +33,10 @@ def parse_tsv(filename):
     """
     genes_list = []
     columns = []
-    header_names = ["chromosome", "reference", "RefSeq_Gene", "RefSeq_Func", "dbsnp138",
-                    "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV", "LJB2_PolyPhen2_HVAR",
-                    "CLINVAR"]
+    header_names = ["chromosome", "reference", "observed", "RefSeq_Gene", "RefSeq_Func", "dbsnp138",
+                    "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV", "CLINVAR"]
+    num_headers = ["1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV"]
+    num_columns = []
 
     with open(filename, "r", encoding="utf8") as tsv_file:  # Open TSV file
         lines = tsv_file.readlines()
@@ -48,12 +49,20 @@ def parse_tsv(filename):
     getter = operator.itemgetter(*columns)  # Create getter function
     header = getter(header)  # Get the headers
 
+    gene_index = header.index("RefSeq_Gene")
+    for x in num_headers:
+        num_columns.append(header.index(x))
+
     for line in lines:  # Iterate through the TSV lines
         if line.startswith("chromosome"):  # Skip the header line
             continue
         line = line.strip("\n").split("\t")  # Split the line
         line = list(getter(line))  # Get the necessary columns
-        line[2] = regex_parsing(line[2])  # Overwrite gene data with parsed gene name
+        # Split the letter value from 1000g, SIFT and PolyPhen2
+        for y in num_columns:
+            line[y] = line[y].split(",")[0]
+        # Overwrite gene data with parsed gene name
+        line[gene_index] = regex_parsing(line[gene_index])
         gene_data = dict(zip(header, line))  # Write data into a dictionary
         genes_list.append(gene_data)  # Put dictionary into a list
 
