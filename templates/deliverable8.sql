@@ -23,7 +23,7 @@ CREATE TABLE Variants(
     observed                CHAR(1)         ,
     RefSeq_Func             VARCHAR(48)     NOT NULL,
     dbsnp138                VARCHAR(15)     ,
-    1000g2015_EUR           VARCHAR(15)     ,
+    1000g2015aug_EUR           VARCHAR(15)     ,
     LJB2_SIFT               VARCHAR(15)     ,
     LJB2_PolyPhen2_HDIV     VARCHAR(10)     ,
     LJB2_PolyPhen2_HVAR     VARCHAR(10)     ,
