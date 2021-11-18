@@ -67,7 +67,6 @@ class AnnoParser:
         getter = operator.itemgetter(*columns)  # Create getter function
         header = getter(header)  # Get the headers
 
-        gene_index = header.index("RefSeq_Gene")
         for x in num_headers:
             num_columns.append(header.index(x))
 
@@ -79,7 +78,10 @@ class AnnoParser:
             line = list(getter(line))  # Get the necessary columns
             # Split the letter value from 1000g, SIFT and PolyPhen2
             for y in num_columns:
-                line[y] = line[y].split(",")[0]
+                try:
+                    line[y] = float(line[y].split(",")[0])
+                except ValueError:
+                    line[y] = None
             # Overwrite gene data with parsed gene name
             line[gene_index] = self._regex_parsing(line[gene_index])
             gene_data = dict(zip(header, line))  # Write data into a dictionary

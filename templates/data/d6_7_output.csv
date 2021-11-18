@@ -7,20 +7,20 @@ chr1,T,A,NBPF1,downstream,rs2779433,,,,
 chr1,C,A,NBPF1,downstream,rs1621733,,,,
 chr1,C,A,-,upstream,rs6586513,0.8101,,,
 chr1,T,A,ARHGEF10L,intronic,rs6678733,,,,
-chr1,G,C,IGSF21,intronic,rs223156,1,,,
-chr1,T,C,IGSF21,intronic,rs223157,1,,,
-chr1,A,G,IGSF21,intronic,rs439857,1,,,
-chr1,A,T,IGSF21,intronic,rs412548,1,,,
+chr1,G,C,IGSF21,intronic,rs223156,1.0,,,
+chr1,T,C,IGSF21,intronic,rs223157,1.0,,,
+chr1,A,G,IGSF21,intronic,rs439857,1.0,,,
+chr1,A,T,IGSF21,intronic,rs412548,1.0,,,
 chr1,G,C,RUNX3/MIR4425,intergenic,rs423539,0.2714,,,
 chr1,A,G,ACTG1P20,ncRNA_exonic,rs79070316,0.1839,,,
 chr1,G,A,PTPRU,intronic,rs35403596,0.1252,,,
 chr1,G,A,-,intergenic,rs894219,0.4195,,,
 chr1,A,G,MIR3659,intergenic,rs2045793,0.2227,,,
-chr1,T,G,MIR4422HG,intergenic,rs1499660,1,,,
+chr1,T,G,MIR4422HG,intergenic,rs1499660,1.0,,,
 chr1,C,A,NEGR1,intronic,rs2781158,0.3917,,,
 chr1,T,C,NEGR1,intronic,,,,,
 chr1,G,A,NEXN,intronic,rs1749913,0.8708,,,
-chr1,G,A,NEXN,exonic,rs1166698,0.2107,0.310000,1.0,Benign|Benign|Likely benign|Likely benign
+chr1,G,A,NEXN,exonic,rs1166698,0.2107,0.31,1.0,Benign|Benign|Likely benign|Likely benign
 chr1,C,T,NEXN,intronic,rs1166699,0.8131,,,
 chr1,C,G,NEXN,intronic,rs4483454,0.8131,,,
 chr1,C,T,ADGRL4,intergenic,rs2989846,0.4702,,,
@@ -76,7 +76,7 @@ chr1,C,T,POU2F1,intronic,rs12728308,0.0169,,,
 chr1,T,G,LAMC1,intronic,rs4652777,0.5636,,,
 chr1,G,A,LAMC1,intronic,rs3768620,0.5636,,,
 chr1,T,C,PLA2G4A,intergenic,rs17530170,0.1849,,,
-chr1,A,G,PLA2G4A,intergenic,rs6666425,1,,,
+chr1,A,G,PLA2G4A,intergenic,rs6666425,1.0,,,
 chr1,C,T,BRINP3,intergenic,rs10754082,0.5457,,,
 chr1,G,C,BRINP3,intergenic,rs10737632,0.5457,,,
 chr1,G,A,-,intergenic,rs524329,0.7843,,,
@@ -90,7 +90,7 @@ chr1,G,T,TNNT2,intronic,rs1892026,0.7435,,,
 chr1,T,C,TNNT2,intronic,rs1892025,0.829,,,
 chr1,C,T,TNNT2,intronic,rs2275860,0.0855,,,
 chr1,G,A,TNNT2,exonic,rs3729547,0.7416,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign\x2cUncertain significance
-chr1,C,T,TNNT2,intronic,rs1573230,1,,,
+chr1,C,T,TNNT2,intronic,rs1573230,1.0,,,
 chr1,T,C,TNNT2,intronic,rs10800775,0.827,,,
 chr1,G,A,TNNT2,intronic,rs1892028,0.6481,,,
 chr1,C,T,TNNT2,intronic,rs3729843,0.4722,,,Benign
@@ -190,25 +190,25 @@ chr1,G,A,RYR2,intronic,rs3820572,0.2237,,,
 chr1,C,T,RYR2,intronic,rs12121663,0.5368,,,
 chr1,C,T,RYR2,intronic,rs477075,0.7187,,,
 chr1,C,G,RYR2,intronic,rs476971,0.831,,,
-chr1,T,C,RYR2,exonic,rs707189,1,,,Benign|Benign|Likely benign|Likely benign
-chr1,T,C,RYR2,intronic,rs530109,1,,,
+chr1,T,C,RYR2,exonic,rs707189,1.0,,,Benign|Benign|Likely benign|Likely benign
+chr1,T,C,RYR2,intronic,rs530109,1.0,,,
 chr1,G,T,RYR2,intronic,rs6657332,0.3897,,,
 chr1,C,A,RYR2,intronic,rs477245,0.997,,,
-chr1,A,G,RYR2,exonic,rs34967813,0.2942,0.420000,0.287,Benign|Benign|Benign|Likely benign|Likely benign
+chr1,A,G,RYR2,exonic,rs34967813,0.2942,0.42,0.287,Benign|Benign|Benign|Likely benign|Likely benign
 chr1,G,C,RYR2,intronic,rs1521745,0.7117,,,
 chr1,T,C,RYR2,intronic,rs1521744,0.7525,,,
 chr1,A,G,RYR2,intronic,rs3736539,0.7068,,,
 chr1,G,A,RYR2,intronic,rs4427395,0.7048,,,
 chr1,G,T,RYR2,intronic,rs10925498,0.7038,,,
 chr1,G,A,RYR2,intronic,rs12754190,0.7048,,,
-chr1,T,G,RYR2,exonic,rs2797436,1,,,Benign|Benign|Likely benign|Likely benign
-chr1,C,T,RYR2,intronic,rs939699,1,,,
+chr1,T,G,RYR2,exonic,rs2797436,1.0,,,Benign|Benign|Likely benign|Likely benign
+chr1,C,T,RYR2,intronic,rs939699,1.0,,,
 chr1,C,T,RYR2,intronic,rs2685299,0.675,,,
-chr1,C,T,RYR2,exonic,rs2797441,1,,,Benign|Benign|Likely benign|Likely benign
+chr1,C,T,RYR2,exonic,rs2797441,1.0,,,Benign|Benign|Likely benign|Likely benign
 chr1,C,A,RYR2,intronic,rs2090876,0.2078,,,
-chr1,C,T,RYR2,intronic,rs2797444,1,,,
-chr1,C,T,RYR2,exonic,rs2685301,1,,,Benign|Benign|Likely benign|Likely benign
-chr1,C,T,RYR2,intronic,rs2797445,1,,,Benign
+chr1,C,T,RYR2,intronic,rs2797444,1.0,,,
+chr1,C,T,RYR2,exonic,rs2685301,1.0,,,Benign|Benign|Likely benign|Likely benign
+chr1,C,T,RYR2,intronic,rs2797445,1.0,,,Benign
 chr1,G,A,RYR2,intronic,rs1879673,0.997,,,
 chr1,C,A,RYR2,intronic,rs4465197,0.3917,,,
 chr1,G,A,RYR2,intronic,rs1915781,0.7306,,,
@@ -227,7 +227,7 @@ chr1,A,G,RYR2,intronic,rs790879,0.1928,,,
 chr1,A,T,RYR2,intronic,rs790880,0.1928,,,
 chr10,A,G,ADARB2-AS1,ncRNA_intronic,rs10903476,0.5616,,,
 chr10,G,A,ADARB2-AS1,ncRNA_intronic,rs11250610,0.4155,,,
-chr10,C,G,-,intergenic,rs7905733,1,,,
+chr10,C,G,-,intergenic,rs7905733,1.0,,,
 chr10,C,T,-,intergenic,rs7909244,0.325,,,
 chr10,C,T,FRMD4A,intronic,rs10737079,0.5318,,,
 chr10,T,C,-,intergenic,rs200742013,,,,
@@ -431,9 +431,9 @@ chr10,G,A,MYPN,exonic,rs62620248,0.0288,,0.951,not provided|Benign|Benign
 chr10,A,G,MYPN,intronic,rs3814183,0.8111,,,
 chr10,G,T,MYPN,intronic,rs10997976,0.2744,,,
 chr10,A,G,MYPN,intronic,rs7097776,0.7097,,,
-chr10,T,C,MYPN,intronic,rs6480306,1,,,Benign
+chr10,T,C,MYPN,intronic,rs6480306,1.0,,,Benign
 chr10,G,T,MYPN,intronic,rs10823149,0.5278,,,
-chr10,T,C,MYPN,exonic,rs10733838,1,,,Benign|Benign\x2cnot provided|Benign
+chr10,T,C,MYPN,exonic,rs10733838,1.0,,,Benign|Benign\x2cnot provided|Benign
 chr10,A,G,MYPN,intronic,rs1900013,0.6491,,,
 chr10,G,A,MYPN,intronic,rs1900012,0.6491,,,
 chr10,G,A,MYPN,intronic,rs7081213,0.4821,,,
@@ -450,9 +450,9 @@ chr10,C,A,MYPN,exonic,rs7079481,0.4841,,1.0,not provided|Benign|Benign
 chr10,G,A,MYPN,intronic,rs7079974,0.4841,,,
 chr10,C,A,MYPN,intronic,rs10998014,0.6938,,,
 chr10,A,G,MYPN,intronic,rs10998015,0.6899,,,
-chr10,A,T,MYPN,intronic,rs2490935,1,,,
+chr10,A,T,MYPN,intronic,rs2490935,1.0,,,
 chr10,A,G,MYPN,intronic,rs7913133,0.6948,,,
-chr10,A,G,MYPN,intronic,rs7913146,1,,,
+chr10,A,G,MYPN,intronic,rs7913146,1.0,,,
 chr10,T,C,MYPN,intronic,rs10998017,0.6899,,,
 chr10,G,C,MYPN,intronic,rs10823157,0.7167,,,
 chr10,G,T,MYPN,intronic,rs7894455,0.4563,,,
@@ -514,16 +514,16 @@ chr10,A,G,RBM20,intronic,rs74788397,0.0527,,,
 chr10,C,T,RBM20,intronic,rs6585014,0.1491,,,
 chr10,G,A,RBM20,intronic,rs7086886,0.2346,,,
 chr10,T,C,RBM20,intronic,rs11195338,0.3787,,,
-chr10,G,A,RBM20,exonic,rs375798246,,0.210000,0.757,Uncertain significance|Uncertain significance
-chr10,G,C,RBM20,exonic,rs1417635,1,0.850000,0.0,Benign\x2cBenign|Benign|Likely benign\x2cBenign|Benign
+chr10,G,A,RBM20,exonic,rs375798246,,0.21,0.757,Uncertain significance|Uncertain significance
+chr10,G,C,RBM20,exonic,rs1417635,1.0,0.85,0.0,Benign\x2cBenign|Benign|Likely benign\x2cBenign|Benign
 chr10,T,C,RBM20,intronic,rs1832745,0.5328,,,
 chr10,G,A,RBM20,intronic,rs1417634,0.5437,,,
 chr10,C,T,RBM20,intronic,rs10787283,0.5249,,,
 chr10,A,G,RBM20,intronic,rs4918595,0.5209,,,
 chr10,G,A,RBM20,intronic,rs4918601,0.4811,,,
-chr10,G,C,RBM20,intronic,rs7070640,1,,,Benign|Likely benign
-chr10,A,G,RBM20,intronic,rs7895891,1,,,
-chr10,G,C,RBM20,exonic,rs942077,0.8688,0.030000,0.834,Benign|Benign|Likely benign
+chr10,G,C,RBM20,intronic,rs7070640,1.0,,,Benign|Likely benign
+chr10,A,G,RBM20,intronic,rs7895891,1.0,,,
+chr10,G,C,RBM20,exonic,rs942077,0.8688,0.03,0.834,Benign|Benign|Likely benign
 chr10,C,G,BAG3,intronic,rs2577336,0.4284,,,
 chr10,A,G,BAG3,intronic,rs2240777,0.0984,,,
 chr10,A,G,BAG3,intronic,rs196327,0.6521,,,
@@ -531,10 +531,10 @@ chr10,G,A,BAG3,intronic,rs196328,0.6511,,,
 chr10,C,A,BAG3,intronic,rs2072361,0.0964,,,
 chr10,A,C,BAG3,intronic,rs196294,0.7485,,,Benign
 chr10,T,G,BAG3,exonic,rs3858339,0.0964,,,Benign|Benign|Benign|Benign
-chr10,C,T,BAG3,exonic,rs3858340,0.0964,0.060000,0.191,Benign|Benign|Benign|Benign
+chr10,C,T,BAG3,exonic,rs3858340,0.0964,0.06,0.191,Benign|Benign|Benign|Benign
 chr10,A,G,BAG3,exonic,rs196295,0.8012,,,Benign|Benign|Benign|Benign
 chr10,G,C,BAG3,UTR3,rs8946,0.3618,,,Benign|Benign
-chr10,G,A,FGFR2/ATE1,intergenic,rs1219634,1,,,
+chr10,G,A,FGFR2/ATE1,intergenic,rs1219634,1.0,,,
 chr10,A,G,STK32C,intronic,rs11599745,0.3579,,,
 chr10,T,A,KNDC1,intronic,rs9419032,0.8917,,,
 chr10,C,T,KNDC1,intronic,rs2998117,0.3698,,,
@@ -562,8 +562,8 @@ chr11,C,T,MYBPC3,exonic,rs1052373,0.3072,,,Benign|Benign|Likely benign|Likely be
 chr11,A,T,MYBPC3,intronic,rs2301216,0.339,,,
 chr11,T,C,MYBPC3,intronic,rs2856653,0.6342,,,
 chr11,G,C,MYBPC3,intronic,rs10769254,0.1819,,,
-chr11,A,G,MYBPC3,intronic,rs896818,1,,,Benign
-chr11,A,G,MYBPC3,intronic,rs2596403,1,,,
+chr11,A,G,MYBPC3,intronic,rs896818,1.0,,,Benign
+chr11,A,G,MYBPC3,intronic,rs2596403,1.0,,,
 chr11,G,A,MYBPC3,exonic,rs11570051,0.0408,,,Benign|Benign|Likely benign|Likely benign|Likely benign
 chr11,A,T,OR4C46,intergenic,rs61891027,,,,
 chr11,A,G,OR4C46,intergenic,rs61891028,,,,
@@ -675,11 +675,11 @@ chr11,A,C,POLD3/CHRDL2,intergenic,rs11236187,0.5149,,,
 chr11,A,G,NEU3/OR2AT4,intergenic,rs12288006,0.1412,,,
 chr11,A,G,GUCY1A2,intergenic,rs78278427,0.0855,,,
 chr11,G,A,CRYAB,intronic,rs2070894,0.3231,,,
-chr11,A,C,CRYAB,intronic,rs11603779,0.3231,0.040000,0.0,Benign|Benign|Benign|Benign|Benign
+chr11,A,C,CRYAB,intronic,rs11603779,0.3231,0.04,0.0,Benign|Benign|Benign|Benign|Benign
 chr11,G,A,FLI1,intronic,rs61909386,0.2465,,,
 chr11,C,A,NTM,intronic,rs7115424,0.4314,,,
 chr12,T,C,ERC1,intronic,rs7315390,0.3847,,,
-chr12,C,T,ERC1,exonic,rs11613546,0.33,0.000000,,
+chr12,C,T,ERC1,exonic,rs11613546,0.33,0.0,,
 chr12,G,T,KCNA6/KCNA1,intergenic,rs10849163,0.336,,,
 chr12,C,T,KCNA6/KCNA1,intergenic,rs10849164,0.336,,,
 chr12,G,A,VAMP1/MRPL51,intergenic,rs2532516,0.508,,,
@@ -690,26 +690,26 @@ chr12,C,T,VAMP1/MRPL51,intergenic,rs2532513,0.6918,,,
 chr12,T,C,SLCO1B7/SLCO1B1,intergenic,rs327551,0.9533,,,
 chr12,A,C,ABCC9,intronic,rs112173463,0.0179,,,
 chr12,C,A,ABCC9,intronic,rs1643235,0.6004,,,
-chr12,A,G,ABCC9,intronic,rs704183,1,,,
-chr12,C,A,ABCC9,intronic,rs2418018,1,,,
-chr12,C,T,ABCC9,intronic,rs2418019,1,,,
-chr12,C,A,ABCC9,intronic,rs2418020,1,,,
+chr12,A,G,ABCC9,intronic,rs704183,1.0,,,
+chr12,C,A,ABCC9,intronic,rs2418018,1.0,,,
+chr12,C,T,ABCC9,intronic,rs2418019,1.0,,,
+chr12,C,A,ABCC9,intronic,rs2418020,1.0,,,
 chr12,G,A,ABCC9,intronic,rs704193,0.3121,,,
-chr12,G,A,ABCC9,intronic,rs1283800,1,,,
-chr12,A,G,ABCC9,intronic,rs697250,1,,,other|Likely benign|Likely benign|Likely benign
-chr12,C,G,ABCC9,intronic,rs697251,1,,,
-chr12,A,G,ABCC9,intronic,rs829067,1,,,
+chr12,G,A,ABCC9,intronic,rs1283800,1.0,,,
+chr12,A,G,ABCC9,intronic,rs697250,1.0,,,other|Likely benign|Likely benign|Likely benign
+chr12,C,G,ABCC9,intronic,rs697251,1.0,,,
+chr12,A,G,ABCC9,intronic,rs829067,1.0,,,
 chr12,A,G,ABCC9,intronic,rs4148664,0.3201,,,
 chr12,C,T,ABCC9,intronic,rs1356368,0.7386,,,
 chr12,T,G,ABCC9,intronic,rs1283802,0.2266,,,
-chr12,G,T,ABCC9,intronic,rs704216,1,,,Benign
+chr12,G,T,ABCC9,intronic,rs704216,1.0,,,Benign
 chr12,C,T,ABCC9,intronic,rs704217,0.7227,,,
-chr12,T,C,ABCC9,intronic,rs10770864,1,,,
-chr12,A,G,ABCC9,exonic,rs10770865,1,,,Likely benign\x2cBenign|Benign|Likely benign|Likely benign|Likely benign
+chr12,T,C,ABCC9,intronic,rs10770864,1.0,,,
+chr12,A,G,ABCC9,exonic,rs10770865,1.0,,,Likely benign\x2cBenign|Benign|Likely benign|Likely benign|Likely benign
 chr12,A,G,ABCC9,intronic,rs4148656,0.659,,,
 chr12,A,C,ABCC9,intronic,rs4148655,0.341,,,
-chr12,G,T,ABCC9,intronic,rs4762719,1,,,Benign
-chr12,T,C,ABCC9,intronic,rs4762720,1,,,Benign|Likely benign|Likely benign|Likely benign
+chr12,G,T,ABCC9,intronic,rs4762719,1.0,,,Benign
+chr12,T,C,ABCC9,intronic,rs4762720,1.0,,,Benign|Likely benign|Likely benign|Likely benign
 chr12,A,G,ABCC9,intronic,rs4148654,0.6571,,,
 chr12,T,C,ABCC9,intronic,rs2418021,0.659,,,
 chr12,A,G,ABCC9,intronic,rs7979299,0.999,,,
@@ -750,10 +750,10 @@ chr12,G,C,MYL2,intronic,rs34254113,0.2515,,,
 chr12,A,G,MYL2,intronic,rs2078847,0.3439,,,
 chr12,A,G,MLXIP,intergenic,rs35249105,0.4433,,,
 chr12,C,T,NCOR2,intronic,rs906299,0.1968,,,
-chr12,A,G,NCOR2,intronic,rs1244052,1,,,
+chr12,A,G,NCOR2,intronic,rs1244052,1.0,,,
 chr12,A,C,NCOR2,intronic,rs1243000,0.333,,,
 chr12,G,A,-,intergenic,rs2174413,0.8877,,,
-chr12,A,G,MIR4419B,intergenic,rs4882823,1,,,
+chr12,A,G,MIR4419B,intergenic,rs4882823,1.0,,,
 chr12,A,G,TMEM132C,intronic,rs10847639,0.6392,,,
 chr12,A,G,TMEM132C,intronic,rs11612682,0.6362,,,
 chr13,T,G,ZDHHC20,intronic,rs3847996,0.663,,,
@@ -800,7 +800,7 @@ chr14,A,G,MYH6,exonic,rs178640,0.4891,,,Benign|Benign|Likely benign|Likely benig
 chr14,A,G,MYH6,intronic,rs178642,0.4831,,,Benign
 chr14,G,A,MYH6,intronic,rs8022522,0.3638,,,Benign|Likely benign|Likely benign|Likely benign
 chr14,C,T,MYH6,exonic,rs451794,0.1064,,,Benign|Benign|Likely benign|Likely benign|Likely benign
-chr14,A,G,MYH6,exonic,rs365990,0.3489,1.000000,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign
+chr14,A,G,MYH6,exonic,rs365990,0.3489,1.0,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign
 chr14,G,T,MYH6,intronic,rs445754,0.2237,,,
 chr14,G,A,MYH6,intronic,rs452036,0.336,,,Benign
 chr14,A,G,MYH6,intronic,rs412768,0.2883,,,Benign
@@ -850,17 +850,17 @@ chr14,C,T,MIR7641-2/MIR5195,intergenic,rs78462736,0.1491,,,
 chr14,T,C,MIR7641-2/MIR5195,intergenic,rs113844840,0.1521,,,
 chr15,A,G,OCA2,intronic,rs2594919,0.6302,,,
 chr15,A,G,RYR3,intronic,rs16957279,0.3618,,,
-chr15,C,T,RYR3,exonic,rs4780144,0.9622,0.050000,0.99,
+chr15,C,T,RYR3,exonic,rs4780144,0.9622,0.05,0.99,
 chr15,A,G,RYR3,intronic,rs3736531,0.1402,,,
-chr15,G,A,RYR3,intronic,rs1111611,1,,,
+chr15,G,A,RYR3,intronic,rs1111611,1.0,,,
 chr15,G,A,RYR3,intronic,rs1390161,0.4175,,,
-chr15,C,G,RYR3,intronic,rs6495270,1,,,
+chr15,C,G,RYR3,intronic,rs6495270,1.0,,,
 chr15,T,A,RYR3,intronic,rs2303310,0.7495,,,
 chr15,T,G,LPCAT4/GOLGA8A,intergenic,rs347895,0.995,,,
 chr15,C,T,-,ncRNA_intronic,rs62006139,0.2078,,,
 chr15,C,T,-,ncRNA_intronic,rs2070664,0.5577,,,
 chr15,C,T,FBN1/CEP152,intergenic,rs4774521,0.7256,,,
-chr15,T,G,TLN2,intronic,rs11858345,1,,,
+chr15,T,G,TLN2,intronic,rs11858345,1.0,,,
 chr15,C,A,-,ncRNA_exonic,rs11856618,0.0408,,,
 chr15,G,A,TPM1,intronic,rs4775613,0.5815,,,
 chr15,T,A,TPM1,intronic,rs28485524,0.1064,,,
@@ -881,7 +881,7 @@ chr15,C,T,TPM1,UTR3,rs1050255,0.1074,,,
 chr15,A,G,TPM1,UTR3,rs8519,0.659,,,
 chr15,A,G,ZNF609,intronic,rs79947369,0.0258,,,
 chr15,A,G,-,ncRNA_exonic,rs11633749,0.4016,,,
-chr15,G,C,-,ncRNA_exonic,rs2460145,1,,,
+chr15,G,C,-,ncRNA_exonic,rs2460145,1.0,,,
 chr15,T,A,MIR9-3HG/RHCG,intergenic,rs208833,0.999,,,
 chr15,C,T,CRTC3-AS1,ncRNA_intronic,rs35583150,0.1849,,,
 chr15,C,T,CRTC3-AS1,ncRNA_intronic,rs76750851,0.2406,,,
@@ -911,7 +911,7 @@ chr16,A,G,ATP2C2,intronic,rs12445867,0.1998,,,
 chr16,G,T,ATP2C2,intronic,rs12445933,0.1103,,,
 chr16,C,A,ATP2C2,intronic,rs11149657,0.1024,,,
 chr16,G,T,ATP2C2,intronic,rs11149658,0.1441,,,
-chr16,C,G,-,intergenic,rs924475,1,,,
+chr16,C,G,-,intergenic,rs924475,1.0,,,
 chr16,C,T,JPH3,exonic,rs61737926,0.0189,,,
 chr17,C,G,MYH13,intronic,rs62060457,0.2853,,,
 chr17,C,A,MYH13,intronic,rs4239113,0.7068,,,
@@ -919,13 +919,13 @@ chr17,G,A,MYH13,exonic,rs4791401,0.3936,,,
 chr17,A,C,MYH13,intronic,rs2277645,0.8201,,,
 chr17,C,T,MYH13,intronic,rs12453187,0.2664,,,
 chr17,A,G,MYH13,intronic,rs2108568,0.998,,,
-chr17,A,G,MYH8,exonic,rs8069834,0.6322,1.000000,0.0,Benign|Likely benign
+chr17,A,G,MYH8,exonic,rs8069834,0.6322,1.0,0.0,Benign|Likely benign
 chr17,G,A,MYH8,exonic,rs3744552,0.6272,,,Benign|Likely benign
 chr17,G,C,MYHAS,ncRNA_intronic,rs9303258,0.6064,,,
 chr17,A,G,MYH8,exonic,rs8068729,0.9414,,,Benign|Likely benign
-chr17,T,C,MYH4,exonic,rs3744554,0.3698,1.000000,0.0,
-chr17,T,C,MYH4,exonic,rs2277649,0.3181,0.000000,0.993,
-chr17,T,C,MYH4,exonic,rs917361,0.3698,0.220000,0.0,
+chr17,T,C,MYH4,exonic,rs3744554,0.3698,1.0,0.0,
+chr17,T,C,MYH4,exonic,rs2277649,0.3181,0.0,0.993,
+chr17,T,C,MYH4,exonic,rs917361,0.3698,0.22,0.0,
 chr17,C,G,MYHAS,ncRNA_intronic,rs3744557,0.3708,,,
 chr17,T,G,MYHAS,ncRNA_intronic,rs3826444,0.6054,,,
 chr17,C,T,MYHAS,ncRNA_intronic,rs78433324,0.001,,,
@@ -934,7 +934,7 @@ chr17,A,G,MYH4,exonic,rs3744561,0.3708,,,
 chr17,A,G,MYHAS,ncRNA_intronic,rs3744563,0.3708,,,
 chr17,A,G,MYHAS,ncRNA_intronic,rs35152572,0.3708,,,
 chr17,A,G,MYH1,exonic,rs2007027,0.9453,,,
-chr17,C,T,MYH3,exonic,rs2285477,0.8161,0.680000,0.014,Benign|Likely benign|Likely benign
+chr17,C,T,MYH3,exonic,rs2285477,0.8161,0.68,0.014,Benign|Likely benign|Likely benign
 chr17,T,C,MYH3,exonic,rs2285472,0.7575,,,Benign|Likely benign|Likely benign
 chr17,A,G,MYH3,intronic,rs2285471,0.7584,,,
 chr17,A,G,MYH3,intronic,rs2285470,0.7584,,,
@@ -1050,7 +1050,7 @@ chr17,G,A,MTRNR2L1,intergenic,rs7502508,0.6233,,,
 chr17,G,T,TCAP/STARD3,upstream;downstream,rs931992,0.674,,,
 chr17,C,T,TCAP,intronic,rs2941510,0.0437,,,Benign
 chr17,A,C,TCAP,exonic,rs1053651,0.7217,,,Benign\x2cBenign|Benign|Likely benign|Likely benign|Likely benign
-chr17,T,A,JUP,exonic,rs1126821,0.7435,0.730000,0.0,other|Benign|Benign|Likely benign
+chr17,T,A,JUP,exonic,rs1126821,0.7435,0.73,0.0,other|Benign|Benign|Likely benign
 chr17,A,G,JUP,intronic,rs9890858,0.7724,,,
 chr17,T,C,JUP,intronic,rs7216034,0.7535,,,Benign
 chr17,G,T,JUP,intronic,rs8067890,0.7525,,,Benign
@@ -1155,7 +1155,7 @@ chr18,C,A,ROCK1,intergenic,rs74629684,,,,
 chr18,A,C,ROCK1,intergenic,,,,,
 chr18,T,C,DSC3,intronic,rs1313582,0.3111,,,
 chr18,C,T,DSC3,intronic,rs276940,0.4284,,,
-chr18,T,C,DSC2,intronic,rs1658128,1,,,
+chr18,T,C,DSC2,intronic,rs1658128,1.0,,,
 chr18,A,G,DSC2,intronic,rs1790701,0.8002,,,
 chr18,T,C,DSC2,intronic,rs1789057,0.3161,,,
 chr18,G,A,DSC2,intronic,rs1790702,0.5139,,,
@@ -1277,7 +1277,7 @@ chr19,A,G,MYH14,exonic,rs1651553,0.7624,,,Benign|Benign
 chr19,A,T,ZNF578,intronic,rs1582914,0.9602,,,
 chr19,A,T,TNNI3,intronic,rs7252048,0.6938,,,
 chr19,C,T,TNNI3,exonic,rs3729841,0.0626,,,Benign|Benign|Likely benign
-chr19,A,C,TNNI3,intronic,rs7252610,1,,,Benign|other|Benign|Likely benign
+chr19,A,C,TNNI3,intronic,rs7252610,1.0,,,Benign|other|Benign|Likely benign
 chr19,C,A,TNNI3,intronic,rs62126324,,,,
 chr19,A,T,TNNI3,intronic,rs62126325,0.1103,,,
 chr19,C,G,TNNI3,intronic,rs3729838,0.1899,,,
@@ -1395,25 +1395,25 @@ chr2,C,G,CNTNAP5,intronic,rs10199562,0.5855,,,
 chr2,T,C,BIN1/CYP27C1,intergenic,rs3943703,0.2584,,,
 chr2,A,G,BIN1/CYP27C1,intergenic,rs2118506,0.2584,,,
 chr2,T,G,MYO7B,intronic,rs10928772,0.4294,,,
-chr2,G,A,POTEF,exonic,rs2599791,0.5865,0.120000,0.001,
-chr2,T,A,POTEF,exonic,rs62165871,,0.010000,0.032,
-chr2,C,A,POTEF,exonic,rs2599794,0.6034,0.120000,0.0,
+chr2,G,A,POTEF,exonic,rs2599791,0.5865,0.12,0.001,
+chr2,T,A,POTEF,exonic,rs62165871,,0.01,0.032,
+chr2,C,A,POTEF,exonic,rs2599794,0.6034,0.12,0.0,
 chr2,A,G,POTEF,exonic,rs2122977,,,,
-chr2,A,G,POTEI,exonic,rs2599792,0.9304,1.000000,,
-chr2,T,A,POTEI,exonic,rs4850168,0.7475,0.010000,,
-chr2,T,C,POTEI,exonic,rs4531942,0.999,1.000000,,
-chr2,C,T,POTEI,exonic,rs4369872,0.9006,0.000000,,
+chr2,A,G,POTEI,exonic,rs2599792,0.9304,1.0,,
+chr2,T,A,POTEI,exonic,rs4850168,0.7475,0.01,,
+chr2,T,C,POTEI,exonic,rs4531942,0.999,1.0,,
+chr2,C,T,POTEI,exonic,rs4369872,0.9006,0.0,,
 chr2,G,A,POTEI,exonic,rs79248549,0.9016,,,
 chr2,G,A,POTEI,exonic,rs2599798,,,,
-chr2,G,A,POTEJ,exonic,rs201265731,,0.010000,,
-chr2,A,C,POTEJ,exonic,rs2672150,0.1213,0.240000,,
+chr2,G,A,POTEJ,exonic,rs201265731,,0.01,,
+chr2,A,C,POTEJ,exonic,rs2672150,0.1213,0.24,,
 chr2,C,T,POTEKP,downstream,rs13011244,0.6988,,,
 chr2,G,A,POTEKP,downstream,rs12991373,0.4155,,,
 chr2,C,G,POTEKP,downstream,rs13011674,0.4155,,,
 chr2,T,C,POTEKP,downstream,rs12692060,0.996,,,
 chr2,T,G,POTEKP,downstream,rs12692061,0.999,,,
 chr2,C,T,LRP1B,intronic,rs1882638,0.9056,,,
-chr2,C,A,LRP1B,intronic,rs1922694,1,,,
+chr2,C,A,LRP1B,intronic,rs1922694,1.0,,,
 chr2,A,G,-,intergenic,rs4667385,0.9354,,,
 chr2,T,A,ARL6IP6/RPRM,intergenic,rs11884799,0.7634,,,
 chr2,T,A,GPD2,intronic,rs297589,0.672,,,
@@ -1422,43 +1422,43 @@ chr2,C,T,SCN3A,intronic,rs2304710,0.1223,,,
 chr2,C,A,SCN1A,intronic,rs3812719,0.6909,,,
 chr2,C,A,SCN1A,intronic,rs10930201,0.6918,,,
 chr2,G,A,SCN9A,intronic,rs4429487,0.6879,,,
-chr2,C,G,TTN,exonic,rs4145333,1,0.000000,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,C,G,TTN,exonic,rs4145333,1.0,0.0,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
 chr2,G,A,TTN,exonic,rs199742163,,,,
-chr2,T,C,TTN,exonic,rs6723526,0.1004,0.000000,0.997,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,C,T,MIR548N,ncRNA_intronic,rs1469473,1,,,
+chr2,T,C,TTN,exonic,rs6723526,0.1004,0.0,0.997,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,C,T,MIR548N,ncRNA_intronic,rs1469473,1.0,,,
 chr2,A,G,MIR548N,ncRNA_intronic,rs3866706,,,,
-chr2,T,G,TTN,intronic,rs2251987,1,,,
+chr2,T,G,TTN,intronic,rs2251987,1.0,,,
 chr2,A,C,TTN,intronic,rs2562840,0.999,,,
 chr2,G,A,TTN,exonic,rs72648978,0.0944,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,C,T,TTN,exonic,rs2562831,1,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,G,A,TTN,exonic,rs2742348,1,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,C,T,TTN,exonic,rs2562831,1.0,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,G,A,TTN,exonic,rs2742348,1.0,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
 chr2,G,A,TTN,exonic,rs72648904,0.0239,,,Benign
-chr2,A,G,TTN,exonic,rs10803917,1,,,Benign
-chr2,T,C,TTN,exonic,rs922984,0.9135,0.570000,0.0,Benign
-chr2,C,G,TTN,exonic,rs922985,1,0.050000,0.003,Benign
-chr2,T,C,TTN,exonic,rs922986,1,,,Benign
+chr2,A,G,TTN,exonic,rs10803917,1.0,,,Benign
+chr2,T,C,TTN,exonic,rs922984,0.9135,0.57,0.0,Benign
+chr2,C,G,TTN,exonic,rs922985,1.0,0.05,0.003,Benign
+chr2,T,C,TTN,exonic,rs922986,1.0,,,Benign
 chr2,T,A,TTN,intronic,rs3754953,0.9145,,,
-chr2,C,T,TTN,exonic,rs7585334,0.9145,0.000000,0.005,Benign
-chr2,C,T,TTN,exonic,rs6433728,1,0.000000,0.0,Likely benign\x2cother
+chr2,C,T,TTN,exonic,rs7585334,0.9145,0.0,0.005,Benign
+chr2,C,T,TTN,exonic,rs6433728,1.0,0.0,0.0,Likely benign\x2cother
 chr2,A,G,TTN,intronic,rs6433730,,,,
-chr2,C,T,TTN,exonic,rs2291310,0.9145,0.000000,0.003,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,T,C,TTN,intronic,rs6705594,1,,,
-chr2,T,C,TTN,exonic,rs4894043,1,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,C,T,TTN,exonic,rs2291311,0.9145,0.000000,0.999,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,C,T,TTN,exonic,rs2291310,0.9145,0.0,0.003,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,T,C,TTN,intronic,rs6705594,1.0,,,
+chr2,T,C,TTN,exonic,rs4894043,1.0,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,C,T,TTN,exonic,rs2291311,0.9145,0.0,0.999,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
 chr2,A,G,TTN,intronic,rs4894044,0.8628,,,
 chr2,T,C,TTN,intronic,rs2291313,0.7763,,,
-chr2,C,T,TTN,intronic,rs4894047,1,,,
+chr2,C,T,TTN,intronic,rs4894047,1.0,,,
 chr2,G,A,TTN,exonic,rs2291306,0.0954,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
 chr2,C,T,TTN,intronic,rs3816781,0.9911,,,
 chr2,G,A,-,ncRNA_exonic,rs719201,0.992,,,Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,T,C,-,ncRNA_exonic,rs7570526,1,,,
+chr2,T,C,-,ncRNA_exonic,rs7570526,1.0,,,
 chr2,A,G,-,ncRNA_intronic,rs2291302,0.992,,,
 chr2,A,G,-,ncRNA_intronic,rs2291301,0.992,,,
-chr2,G,A,TTN,exonic,rs1552280,0.992,0.000000,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,T,C,TTN,exonic,rs10497520,0.8569,0.000000,0.86,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,G,A,TTN,exonic,rs1552280,0.992,0.0,0.0,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,T,C,TTN,exonic,rs10497520,0.8569,0.0,0.86,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
 chr2,A,T,TTN,intronic,rs12693168,0.992,,,
-chr2,C,T,TTN,exonic,rs72647851,0.0149,0.000000,0.001,other|Benign|Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr2,T,C,TTN,intronic,rs900772,1,,,
+chr2,C,T,TTN,exonic,rs72647851,0.0149,0.0,0.001,other|Benign|Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
+chr2,T,C,TTN,intronic,rs900772,1.0,,,
 chr2,C,G,NUP35/MIR548AE1,intergenic,rs842558,0.997,,,
 chr2,G,A,NUP35/MIR548AE1,intergenic,rs842562,0.997,,,
 chr2,T,G,HECW2,intronic,rs4566380,0.7028,,,
@@ -1466,8 +1466,8 @@ chr2,C,T,HECW2,intronic,rs10804070,0.2734,,,
 chr2,C,T,CXCR2,exonic,rs2230054,0.4602,,,
 chr2,A,G,DES,exonic,rs1318299,0.9901,,,Benign\x2cBenign|Benign|Benign|Benign|Benign|Benign|Benign
 chr2,T,C,DES,exonic,rs2017800,0.9901,,,Benign\x2cBenign|Benign|Benign|Benign|Benign|Benign|Benign
-chr2,T,G,DES,intronic,rs907677,1,,,
-chr2,G,C,DES,intronic,rs2666106,1,,,
+chr2,T,G,DES,intronic,rs907677,1.0,,,
+chr2,G,C,DES,intronic,rs2666106,1.0,,,
 chr2,C,T,DES,intronic,rs12991025,0.6243,,,Benign
 chr2,C,T,DES,exonic,rs1058261,0.3648,,,Benign|Benign|Benign|Benign|Benign|Benign
 chr2,G,C,DES,exonic,rs12920,0.3648,,,Benign|Benign|Benign|Benign|Benign|Benign
@@ -1481,7 +1481,7 @@ chr2,T,G,SP100,intergenic,rs1966976,0.3449,,,
 chr2,A,T,SP100,intergenic,rs55795378,0.3449,,,
 chr2,C,T,SP100,intergenic,rs56007290,0.3449,,,
 chr2,G,A,SP100,intergenic,rs62194782,0.2048,,,
-chr2,G,A,KCNJ13,exonic,rs1801251,0.2873,0.060000,0.0,Likely benign
+chr2,G,A,KCNJ13,exonic,rs1801251,0.2873,0.06,0.0,Likely benign
 chr2,A,G,SH3BP4/AGAP1,intergenic,rs6753881,0.1312,,,
 chr2,A,G,AGAP1,intronic,rs59832814,0.2465,,,
 chr2,A,T,KLHL30/ERFE,intergenic,rs935417,0.7068,,,
@@ -1506,11 +1506,11 @@ chr20,G,C,CHMP4B/RALY-AS1,intergenic,rs6057939,0.1402,,,
 chr20,T,C,MYH7B,exonic,rs3746446,0.1948,,,
 chr20,T,C,MYH7B,intronic,rs7268266,0.1938,,,
 chr20,G,A,MYH7B,exonic,rs2425012,0.4861,,,
-chr20,A,G,MYH7B,exonic,rs2425015,1,1.000000,0.0,
+chr20,A,G,MYH7B,exonic,rs2425015,1.0,1.0,0.0,
 chr20,C,T,MYH7B,exonic,rs3746438,0.495,,,
 chr20,G,A,MYH7B,exonic,rs41312284,0.0527,,,
 chr20,G,A,MYH7B,exonic,rs41310801,0.0527,,,
-chr20,A,T,MYH7B,exonic,rs61746253,0.006,0.000000,1.0,
+chr20,A,T,MYH7B,exonic,rs61746253,0.006,0.0,1.0,
 chr20,G,A,MYH7B,exonic,rs36003887,0.1938,,,
 chr20,T,A,PPP1R16B,intronic,rs6028173,0.6292,,,
 chr20,T,A,PPP1R16B,intronic,rs6028174,0.5984,,,
@@ -1539,7 +1539,7 @@ chr22,T,C,POTEH,UTR3,rs1967467,,,,
 chr22,A,G,POTEH,UTR3,rs1967468,,,,
 chr22,T,C,POTEH,UTR3,rs1967469,,,,
 chr22,C,G,TXNRD2,intronic,rs11913319,0.2913,,,
-chr22,A,G,TXNRD2,exonic,rs1139793,0.7217,0.150000,0.0,Benign
+chr22,A,G,TXNRD2,exonic,rs1139793,0.7217,0.15,0.0,Benign
 chr22,C,T,TXNRD2,intronic,rs2239893,0.2903,,,
 chr22,T,C,TXNRD2,intronic,rs5992492,0.4473,,,
 chr22,A,G,TXNRD2,intronic,rs885987,0.5646,,,
@@ -1548,7 +1548,7 @@ chr22,A,G,TXNRD2,intronic,rs4819850,0.5596,,,
 chr22,G,A,TXNRD2,intronic,rs756661,0.5596,,,
 chr22,C,T,TXNRD2,intronic,rs5993865,0.3559,,,
 chr22,C,G,TXNRD2,intronic,rs3747067,0.5089,,,
-chr22,C,A,TXNRD2,exonic,rs5748469,0.3549,0.110000,0.997,Benign
+chr22,C,A,TXNRD2,exonic,rs5748469,0.3549,0.11,0.997,Benign
 chr22,G,A,TXNRD2,exonic,rs5748470,0.506,,,Benign
 chr22,A,G,TXNRD2,intronic,rs5748471,0.5586,,,
 chr22,C,T,TXNRD2,intronic,rs2020917,0.2803,,,
@@ -1599,9 +1599,9 @@ chr3,C,T,SCN5A,intronic,rs55899887,0.4563,,,
 chr3,G,C,SCN5A,intronic,rs6770569,0.4811,,,
 chr3,C,T,SCN5A,intronic,rs6599222,0.8012,,,
 chr3,T,C,SCN5A,intronic,rs9873213,0.829,,,
-chr3,G,A,SCN5A,exonic,rs45620037,0.001,0.000000,1.0,Pathogenic|Benign|Uncertain significance|other|Uncertain significance|Pathogenic
+chr3,G,A,SCN5A,exonic,rs45620037,0.001,0.0,1.0,Pathogenic|Benign|Uncertain significance|other|Uncertain significance|Pathogenic
 chr3,T,C,SCN5A,exonic,rs6599230,0.7883,,,Benign|Benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign|Likely benign
-chr3,T,C,SCN10A,exonic,rs6599241,1,1.000000,0.0,Benign
+chr3,T,C,SCN10A,exonic,rs6599241,1.0,1.0,0.0,Benign
 chr3,A,G,SCN10A,exonic,rs6599242,0.9125,,,Benign
 chr3,A,C,ULK4,intronic,rs12330747,0.7903,,,
 chr3,C,T,MYL3,UTR3,rs1042973,0.1103,,,Likely benign
@@ -1826,7 +1826,7 @@ chr5,T,C,SLC25A48,intronic,rs27346,0.9702,,,
 chr5,T,G,TRPC7/SPOCK1,intergenic,rs2347578,0.4801,,,
 chr5,G,A,KCTD16/PRELID2,intergenic,rs4912682,0.5179,,,
 chr5,A,G,KCTD16/PRELID2,intergenic,rs271592,0.339,,,
-chr5,C,T,KCTD16/PRELID2,intergenic,rs6887533,1,,,
+chr5,C,T,KCTD16/PRELID2,intergenic,rs6887533,1.0,,,
 chr5,A,G,HTR4/ADRB2,intergenic,rs2116719,0.5139,,,
 chr5,A,G,PDE6A,intronic,rs30817,0.3032,,,
 chr5,T,C,KIF4B/SGCD,intergenic,rs2436423,0.3658,,,
@@ -1860,7 +1860,7 @@ chr6,C,T,LYRM4-AS1,ncRNA_intronic,rs1771868,0.7753,,,
 chr6,T,C,DSP,intronic,rs10484326,0.2614,,,Benign
 chr6,G,A,DSP,intronic,rs36122115,0.1312,,,
 chr6,T,G,DSP,intronic,rs2076295,0.4145,,,
-chr6,T,G,DSP,exonic,rs2806234,1,,,Likely benign\x2cother\x2cLikely benign
+chr6,T,G,DSP,exonic,rs2806234,1.0,,,Likely benign\x2cother\x2cLikely benign
 chr6,C,T,DSP,intronic,rs2076296,0.7644,,,Benign
 chr6,G,T,DSP,intronic,rs2076297,0.7644,,,
 chr6,C,T,DSP,intronic,rs11755954,0.1352,,,
@@ -1922,8 +1922,8 @@ chr6,A,T,LAMA4,intronic,rs720179,0.4264,,,
 chr6,A,T,LAMA4,intronic,rs2345806,0.3211,,,
 chr6,A,T,LAMA4,intronic,rs2032565,0.7087,,,
 chr6,T,C,LAMA4,intronic,rs2032566,0.7087,,,
-chr6,G,C,LAMA4,exonic,rs1050349,0.2316,0.220000,1.0,Benign
-chr6,C,T,LAMA4,exonic,rs2032567,0.7087,1.000000,0.001,Benign
+chr6,G,C,LAMA4,exonic,rs1050349,0.2316,0.22,1.0,Benign
+chr6,C,T,LAMA4,exonic,rs2032567,0.7087,1.0,0.001,Benign
 chr6,G,A,LAMA4,intronic,rs2032568,0.7087,,,Benign
 chr6,G,A,LAMA4,intronic,rs2072019,0.2445,,,
 chr6,G,A,LAMA4,intronic,rs1016825,0.2416,,,
@@ -1934,12 +1934,12 @@ chr6,A,G,LAMA4,intronic,rs9487828,0.2575,,,
 chr6,C,T,LAMA4,intronic,rs34807218,0.2565,,,
 chr6,T,C,LAMA4,intronic,rs2277084,0.2575,,,
 chr6,G,C,LAMA4,intronic,rs6568719,0.2555,,,
-chr6,A,G,LAMA4,exonic,rs1050348,0.6501,0.450000,0.0,Benign
+chr6,A,G,LAMA4,exonic,rs1050348,0.6501,0.45,0.0,Benign
 chr6,G,T,LAMA4,intronic,rs9400520,0.5139,,,
 chr6,G,A,LAMA4,intronic,rs9374309,0.5129,,,
 chr6,G,T,LAMA4,intronic,rs6908219,0.7396,,,
-chr6,T,G,LAMA4,exonic,rs9387061,1,,,Benign
-chr6,G,T,LAMA4,exonic,rs9400522,1,0.080000,0.009,Benign
+chr6,T,G,LAMA4,exonic,rs9387061,1.0,,,Benign
+chr6,G,T,LAMA4,exonic,rs9400522,1.0,0.08,0.009,Benign
 chr6,G,T,RFPL4B,intergenic,rs9398345,0.334,,,
 chr6,G,A,MAN1A1,intergenic,rs6904915,0.4324,,,
 chr6,C,G,THEMIS,intronic,rs6934865,0.5785,,,
@@ -1998,7 +1998,7 @@ chr7,C,A,-,intergenic,rs1195227,0.8559,,,
 chr7,T,C,GNAI1,intergenic,rs304745,0.159,,,
 chr7,C,G,GNAI1,intergenic,rs304746,0.159,,,
 chr7,G,A,CDK14,intronic,rs10260473,0.6948,,,
-chr7,G,A,GATAD1,exonic,rs10281879,0.1471,0.920000,0.0,Benign
+chr7,G,A,GATAD1,exonic,rs10281879,0.1471,0.92,0.0,Benign
 chr7,C,G,GATAD1,intronic,rs6963580,0.1958,,,
 chr7,T,G,GATAD1,intronic,rs113199895,0.0686,,,
 chr7,C,G,GATAD1,intronic,rs6465358,0.1958,,,
@@ -2056,14 +2056,14 @@ chr8,A,C,MYOM2,intronic,rs7459837,0.5477,,,
 chr8,A,G,MYOM2,intronic,rs10089196,0.5477,,,
 chr8,T,G,MYOM2,intronic,rs10092304,0.5477,,,
 chr8,T,C,MYOM2,intronic,rs10092320,0.5477,,,
-chr8,C,A,CSMD1,intronic,rs4875318,1,,,
+chr8,C,A,CSMD1,intronic,rs4875318,1.0,,,
 chr8,G,A,CSMD1,intergenic,rs12675095,0.2833,,,
 chr8,T,C,CSMD1,intergenic,rs4875498,0.9026,,,
 chr8,A,G,CSMD1,intergenic,rs17452511,0.3628,,,
 chr8,G,A,CSMD1,intergenic,rs13248581,0.6332,,,
 chr8,C,T,CSMD1,intergenic,rs13250759,0.6332,,,
 chr8,C,T,CSMD1,intergenic,rs17456690,0.3181,,,
-chr8,T,C,TNKS,intergenic,rs10098506,1,,,
+chr8,T,C,TNKS,intergenic,rs10098506,1.0,,,
 chr8,T,A,TNKS,intergenic,rs10098618,0.7634,,,
 chr8,G,A,FAM167A,intronic,rs67932868,0.2087,,,
 chr8,G,C,FAM167A,intronic,rs68063127,0.2097,,,
@@ -2120,7 +2120,7 @@ chr9,T,G,KDM4C,intronic,rs4742266,0.0477,,,
 chr9,C,T,KDM4C/TMEM261,intergenic,rs1485187,0.2097,,,
 chr9,G,A,SH3GL2,intronic,rs4961591,0.7117,,,
 chr9,T,C,-,intergenic,rs2210441,0.325,,,
-chr9,A,C,SHB/ALDH1B1,intergenic,rs2585676,1,,,
+chr9,A,C,SHB/ALDH1B1,intergenic,rs2585676,1.0,,,
 chr9,A,G,GXYLT1P3,intergenic,rs397626,,,,
 chr9,G,A,GXYLT1P3,intergenic,rs2924215,,,,
 chr9,G,A,GXYLT1P3,intergenic,rs2759582,,,,
@@ -2256,7 +2256,7 @@ chr9,C,T,FRG1JP,intergenic,rs2724316,,,,
 chr9,C,A,FRG1JP,intergenic,rs74562311,,,,
 chr9,G,A,FRG1JP,intergenic,rs2724318,,,,
 chr9,T,A,FRG1JP,intergenic,rs62544809,,,,
-chr9,A,G,-,intergenic,rs7389693,1,,,
+chr9,A,G,-,intergenic,rs7389693,1.0,,,
 chr9,C,G,-,ncRNA_intronic,,,,,
 chr9,T,A,-,ncRNA_intronic,,,,,
 chr9,A,C,-,ncRNA_intronic,,,,,
@@ -2474,12 +2474,12 @@ chrX,G,A,DMD,intronic,rs2293667,0.8851,,,
 chrX,A,G,DMD,intronic,rs5927704,0.8799,,,
 chrX,T,C,DMD,intronic,rs5972341,0.3172,,,
 chrX,A,G,DMD,intronic,rs10127360,0.3159,,,
-chrX,C,T,DMD,exonic,rs1800280,0.9386,0.820000,0.0,Benign|Benign\x2cBenign
+chrX,C,T,DMD,exonic,rs1800280,0.9386,0.82,0.0,Benign|Benign\x2cBenign
 chrX,C,T,DMD,intronic,rs5927803,0.3251,,,
 chrX,A,G,DMD,exonic,rs1801188,0.1567,,,Benign|Benign|Likely benign
 chrX,G,C,DMD,intronic,rs5927823,0.1527,,,
 chrX,G,C,DMD,intronic,rs1379871,0.3381,,,
-chrX,G,A,DMD,exonic,rs1800273,0.0326,0.040000,0.999,other|Benign|Benign|Likely benign
+chrX,G,A,DMD,exonic,rs1800273,0.0326,0.04,0.999,other|Benign|Benign|Likely benign
 chrX,C,T,DMD,intronic,rs3747400,0.2193,,,
 chrX,A,G,DMD,intronic,rs331335,0.4608,,,
 chrX,C,T,DMD,intronic,rs6631543,0.6227,,,
@@ -2487,7 +2487,7 @@ chrX,C,A,DMD,intronic,rs6527184,0.154,,,
 chrX,C,T,DMD,intronic,rs7891425,0.154,,,
 chrX,C,A,DMD,intronic,rs1456732,0.7337,,,
 chrX,C,T,DMD,intronic,rs1325579,0.5927,,,
-chrX,C,T,DMD,exonic,rs1801187,0.4634,0.290000,1.0,Benign|Benign|Likely benign
+chrX,C,T,DMD,exonic,rs1801187,0.4634,0.29,1.0,Benign|Benign|Likely benign
 chrX,C,T,DMD,intronic,rs5927975,0.4543,,,
 chrX,G,C,DMD,intronic,rs16990293,0.1305,,,
 chrX,T,C,DMD,intronic,rs57969988,0.1305,,,
@@ -2495,7 +2495,7 @@ chrX,G,A,DMD,intronic,rs16990296,0.1253,,,
 chrX,A,T,DMD,intronic,rs56094071,0.1397,,,
 chrX,G,C,DMD,intronic,rs2076366,0.4465,,,
 chrX,T,C,DMD,intronic,rs170608,0.7846,,,
-chrX,T,C,DMD,exonic,rs228406,0.6854,0.590000,0.004,Benign|Benign\x2cBenign
+chrX,T,C,DMD,exonic,rs228406,0.6854,0.59,0.004,Benign|Benign\x2cBenign
 chrX,C,T,DMD,intronic,rs808543,0.4034,,,
 chrX,C,A,DMD,intronic,rs808542,0.4034,,,
 chrX,A,G,DMD,intronic,rs808541,0.3969,,,
@@ -2505,8 +2505,8 @@ chrX,T,C,DMD,intronic,rs145343465,0.0026,,,
 chrX,A,G,DMD,intronic,rs989355,0.0966,,,
 chrX,C,T,DMD,intronic,rs3764763,0.2272,,,
 chrX,G,T,RP2,downstream,rs6521166,0.9974,,,
-chrX,T,G,GATA1,intronic,rs62600348,1,,,
-chrX,T,G,GATA1,intronic,rs66717003,1,,,
+chrX,T,G,GATA1,intronic,rs62600348,1.0,,,
+chrX,T,G,GATA1,intronic,rs66717003,1.0,,,
 chrX,T,C,DGKK,intronic,rs5961183,0.3407,,,
 chrX,A,G,XAGE1E/SSX8,intergenic,rs5943648,0.0561,,,
 chrX,A,G,CPXCR1/TGIF2LX,intergenic,rs860197,0.7781,,,

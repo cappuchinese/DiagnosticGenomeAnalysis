@@ -60,7 +60,10 @@ def parse_tsv(filename):
         line = list(getter(line))  # Get the necessary columns
         # Split the letter value from 1000g, SIFT and PolyPhen2
         for y in num_columns:
-            line[y] = line[y].split(",")[0]
+            try:
+                line[y] = float(line[y].split(",")[0])
+            except ValueError:
+                line[y] = None
         # Overwrite gene data with parsed gene name
         line[gene_index] = regex_parsing(line[gene_index])
         gene_data = dict(zip(header, line))  # Write data into a dictionary
