@@ -51,13 +51,15 @@ class AnnoParser:
         """
         genes_list = []
         columns = []
+        # Columns for the Variants table
         header_names = ["chromosome", "reference", "observed", "RefSeq_Gene", "RefSeq_Func",
                         "dbsnp138", "1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV",
                         "CLINVAR"]
+        # Columns that need to be altered at the end
         num_headers = ["1000g2015aug_EUR", "LJB2_SIFT", "LJB2_PolyPhen2_HDIV"]
         num_columns = []
 
-        lines = self.file_opener()
+        lines = self.file_opener()  # Open ANNOVAR file
 
         header = lines[0].strip().split("\t")  # The header line
 
@@ -86,7 +88,7 @@ class AnnoParser:
             line[gene_index] = self._regex_parsing(line[gene_index])
             gene_data = dict(zip(header, line))  # Write data into a dictionary
             genes_list.append(gene_data)  # Put dictionary into a list
-        #print(genes_list)
+
         return genes_list
 
     @staticmethod
@@ -146,25 +148,18 @@ class DatabaseConnector:
         Main function to run program
         :return:
         """
-        config = {
-            "host": self.args.host,
-            "user": self.args.user,
-            "password": self.password,
-            "database": self.args.database,
-        }
-        self.data_to_db(config, self.anno_data)
+        cursor, connector = self.db_connect()
+        self.data_manip(cursor, connector, self.anno_data)
 
-    def data_to_db(self, config, gene_data):
+    def db_connect(self):
         """
         Function to connect to database and put data in
-        :param config: login credentials
-        :param gene_data: parsed ANNOVAR data
         :return:
         """
         try:
             # Make connection to database
-            connector = mariadb.connect(host=config["host"], user=config["user"],
-                                        passwd=config["password"], db=config["database"])
+            connector = mariadb.connect(host=self.args.host, user=self.args.user,
+                                        passwd=self.password, db=self.args.database)
             cursor = connector.cursor()
 
             # Open SQL script
@@ -182,10 +177,20 @@ class DatabaseConnector:
                     print("Operational Error")
             connector.commit()
 
+            return cursor, connector
+
         # Catch possible errors (connection or execution of script)
         except mariadb.Error as err:
             print(f"Error with the database:\n{err}")
 
+    def data_manip(self, cursor, connector, gene_data):
+        """
+        Put data into database
+        :param cursor:
+        :param connector:
+        :param gene_data:
+        :return:
+        """
         for item, variant in enumerate(gene_data):
             # Check if the chromosome or gene already exist in the tables
             try:
@@ -217,9 +222,13 @@ class DatabaseConnector:
 
             self._insert_data(cursor, 'Variants', variant)
 
+            # Set empty strings to NULL values
             cursor.execute("UPDATE Variants SET 1000g2015aug_EUR=NULL WHERE 1000g2015aug_EUR='';")
             cursor.execute("UPDATE Variants SET LJB2_SIFT=NULL WHERE LJB2_SIFT='';")
-            cursor.execute("UPDATE Variants SET LJB2_PolyPhen2_HDIV=NULL WHERE LJB2_PolyPhen2_HDIV='';")
+            cursor.execute("UPDATE Variants SET LJB2_PolyPhen2_HDIV=NULL "
+                           "WHERE LJB2_PolyPhen2_HDIV='';")
+
+            # Alter columns to floats
             cursor.execute("ALTER TABLE Variants MODIFY COLUMN 1000g2015aug_EUR FLOAT;")
             cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_SIFT FLOAT;")
             cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_PolyPhen2_HDIV FLOAT;")
@@ -245,7 +254,6 @@ class DatabaseConnector:
         data_columns = [column for column in table_columns if column in data.keys()]
         # Join the values from the data
         value_query = ', '.join(f"'{data[variant_info]}'" for variant_info in data_columns)
-
 
         # Execute insert query
         cursor.execute(f"INSERT INTO {table} ({', '.join(data_columns)}) "
