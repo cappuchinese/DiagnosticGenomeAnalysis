@@ -153,7 +153,7 @@ class DatabaseConnector:
 
     def db_connect(self):
         """
-        Function to connect to database and put data in
+        Function to connect to database
         :return:
         """
         try:
@@ -233,17 +233,7 @@ class DatabaseConnector:
             cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_SIFT FLOAT;")
             cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_PolyPhen2_HDIV FLOAT;")
 
-            connector.commit()
-
-        cursor.execute("UPDATE Variants SET 1000g2015aug_EUR=NULL WHERE 1000g2015aug_EUR='';")
-        cursor.execute("UPDATE Variants SET LJB2_SIFT=NULL WHERE LJB2_SIFT='';")
-        cursor.execute("UPDATE Variants SET LJB2_PolyPhen2_HDIV=NULL WHERE LJB2_PolyPhen2_HDIV='';")
-        cursor.execute("ALTER TABLE Variants MODIFY COLUMN 1000g2015aug_EUR FLOAT;")
-        cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_SIFT FLOAT;")
-        cursor.execute("ALTER TABLE Variants MODIFY COLUMN LJB2_PolyPhen2_HDIV FLOAT;")
-
         connector.commit()
-
         connector.close()
 
     @staticmethod
